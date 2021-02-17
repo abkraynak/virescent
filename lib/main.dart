@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Virescent
-
 void main() {
   runApp(MyApp());
 }
