@@ -67,8 +67,13 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     final buttonForgotPassword = FlatButton(
-        child: Text('Forgot Password', style: TextStyle(color: Colors.grey, fontSize: 16),),
+        child: Text('Forgot Password', style: TextStyle(color: Colors.red, fontSize: 20),),
         onPressed: null
+    );
+
+    final buttonContinue = FlatButton(
+        onPressed: null,
+        child: Text('Continue without Account', style: TextStyle(color: Colors.blue, fontSize: 20),)
     );
 
     return SafeArea(
@@ -82,7 +87,8 @@ class _LoginPageState extends State<LoginPage> {
                 inputEmail,
                 inputPassword,
                 buttonLogin,
-                buttonForgotPassword
+                buttonForgotPassword,
+                buttonContinue
               ],
             ),
           ),
