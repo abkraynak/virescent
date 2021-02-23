@@ -55,9 +55,9 @@ class _LoginPageState extends State<LoginPage> {
         height: 56,
         child: RaisedButton(
           child: Text('Login', style: TextStyle(color: Colors.white, fontSize: 20)),
-          color: Colors.black87,
+          color: Colors.lightGreen,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50)
+              borderRadius: BorderRadius.circular(10)
           ),
           onPressed: () => {
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard()))
@@ -67,13 +67,16 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     final buttonForgotPassword = FlatButton(
-        child: Text('Forgot Password', style: TextStyle(color: Colors.red, fontSize: 20),),
+        child: Text('Forgot Password?', style: TextStyle(color: Colors.grey, fontSize: 20),),
         onPressed: null
     );
 
     final buttonContinue = FlatButton(
-        onPressed: null,
-        child: Text('Continue without Account', style: TextStyle(color: Colors.blue, fontSize: 20),)
+        child: Text('Continue without Account', style: TextStyle(color: Colors.grey, fontSize: 20),),
+        onPressed: () => {
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard()))
+        }
+
     );
 
     return SafeArea(
