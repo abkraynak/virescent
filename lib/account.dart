@@ -10,7 +10,7 @@ class Dashboard extends StatelessWidget {
           tag: 'logo',
           child: SizedBox(
             height: 160,
-            child: Image.asset('assets/ac-arno-dorian.png'),
+            child: Image.asset('assets/placeholder.png'),
           )
       ),
     );
@@ -20,7 +20,7 @@ class Dashboard extends StatelessWidget {
       child: RichText(
         textAlign: TextAlign.justify,
         text: TextSpan(
-            text: 'Anim ad ex officia nulla anim ipsum ut elit minim id non ad enim aute. Amet enim adipisicing excepteur ea fugiat excepteur enim veniam veniam do quis magna. Cupidatat quis exercitation ut ipsum dolor ipsum. Qui commodo nostrud magna consectetur. Nostrud culpa laboris Lorem aliqua non ut veniam culpa deserunt laborum occaecat officia.',
+            text: 'Test text',
             style: TextStyle(color: Colors.black, fontSize: 20)
         ),
       ),
