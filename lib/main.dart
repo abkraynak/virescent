@@ -1,3 +1,5 @@
+import 'package:Virescent/login-page.dart';
+import 'package:Virescent/account.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,12 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: 'Virescent',
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Virescent'),
+      home: LoginPage(),
     );
   }
 }
