@@ -12,10 +12,10 @@ class _LoginPageState extends State<LoginPage> {
     final logo = Padding(
       padding: EdgeInsets.all(20),
       child: Hero(
-          tag: 'hero',
+          tag: 'logo',
           child: CircleAvatar(
-            radius: 56.0,
-            child: Image.asset('assets/ac-logo.png'),
+            radius: 50.0,
+            child: Image.asset('assets/logo-placeholder.png'), // Add image file
           )
       ),
     );
@@ -25,10 +25,10 @@ class _LoginPageState extends State<LoginPage> {
       child: TextField(
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-            hintText: 'Email',
-            contentPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+            hintText: 'Username',
+            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50.0)
+                borderRadius: BorderRadius.circular(10.0)
             )
         ),
       ),
@@ -41,9 +41,9 @@ class _LoginPageState extends State<LoginPage> {
         obscureText: true,
         decoration: InputDecoration(
             hintText: 'Password',
-            contentPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50.0)
+                borderRadius: BorderRadius.circular(10.0)
             )
         ),
       ),
