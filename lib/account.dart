@@ -4,29 +4,6 @@ import 'package:Virescent/login-page.dart';
 class Account extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    /*
-    final avatar = Padding(
-      padding: EdgeInsets.all(20),
-      child: Hero(
-          tag: 'logo',
-          child: SizedBox(
-            height: 160,
-            child: Image.asset('assets/placeholder.png'),
-          )),
-    );
-    */
-    /*
-    final description = Padding(
-      padding: EdgeInsets.all(10),
-      child: RichText(
-        textAlign: TextAlign.justify,
-        text: TextSpan(
-            text: 'Test text',
-            style: TextStyle(color: Colors.black, fontSize: 20)),
-      ),
-    );
-    */
-
     final buttonLogout = FlatButton(
         child: Text(
           'Logout',
@@ -60,6 +37,8 @@ class Account extends StatelessWidget {
             label: 'Account',
           ),
         ],
+        currentIndex: 2,
+        selectedItemColor: Colors.green,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: null,
