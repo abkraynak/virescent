@@ -13,10 +13,7 @@ class _LoginPageState extends State<LoginPage> {
       padding: EdgeInsets.all(20),
       child: Hero(
           tag: 'logo',
-          child: CircleAvatar(
-            radius: 50.0,
-            child: Image.asset('assets/logo-placeholder.png'), // Add image file
-          )
+          child: Image.asset('assets/logo-placeholder.png'), // Add image file
       ),
     );
 
