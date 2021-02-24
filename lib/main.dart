@@ -1,5 +1,5 @@
 import 'package:Virescent/login-page.dart';
-import 'package:Virescent/account.dart';
+//import 'package:Virescent/account.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,7 +7,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static const String _title = 'Virescent';
+  //static const String _title = 'Virescent';
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _onItemTapped,
       ),
       floatingActionButton: FloatingActionButton(
-        //onPressed: _incrementCounter,
+        onPressed: null,
         tooltip: 'Camera',
         child: Icon(Icons.camera_alt),
       ),

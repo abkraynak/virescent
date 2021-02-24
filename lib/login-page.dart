@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
               borderRadius: BorderRadius.circular(10)
           ),
           onPressed: () => {
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard()))
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Account()))
           },
         ),
       ),
@@ -74,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
     final buttonContinue = FlatButton(
         child: Text('Continue without Account', style: TextStyle(color: Colors.grey, fontSize: 20),),
         onPressed: () => {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard()))
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Account()))
         }
 
     );
