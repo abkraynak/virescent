@@ -1,8 +1,13 @@
 import 'package:Virescent/login-page.dart';
 //import 'package:Virescent/account.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.lightGreen[300],
+    statusBarColor: Colors.lightGreen[300],
+  ));
   runApp(MyApp());
 }
 
