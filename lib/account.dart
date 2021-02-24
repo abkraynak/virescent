@@ -15,6 +15,9 @@ class Account extends StatelessWidget {
         });
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Account'),
+      ),
       body: Center(
         child: ListView(
           shrinkWrap: true,
