@@ -1,3 +1,4 @@
+import 'package:Virescent/widget_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:Virescent/login-page.dart';
 
@@ -25,24 +26,7 @@ class Account extends StatelessWidget {
           children: <Widget>[buttonLogout],
         ),
       ),
-      bottomNavigationBar: new BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: 'Locations',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Account',
-          ),
-        ],
-        currentIndex: 2,
-        selectedItemColor: Colors.green,
-      ),
+      bottomNavigationBar: kBottomBar,
       floatingActionButton: FloatingActionButton(
         onPressed: null,
         tooltip: 'Camera',
