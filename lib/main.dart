@@ -243,7 +243,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Virescent')),
       body: PersistentTabView(
         context,
         controller: _controller,

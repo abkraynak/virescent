@@ -95,6 +95,7 @@ class LocationsScreen0 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Locations')),
       backgroundColor: Colors.teal,
       body: Container(
         child: Center(
@@ -104,20 +105,49 @@ class LocationsScreen0 extends StatelessWidget {
               RaisedButton(
                 color: Colors.indigo,
                 onPressed: () {
-                  pushNewScreen(context, screen: CameraScreen0());
+                  pushNewScreen(context, screen: LocationsScreen1());
                 },
                 child: Text(
-                  "Go to Third Screen",
+                  "Go to locations sub-screen ->",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LocationsScreen1 extends StatelessWidget {
+  final BuildContext menuScreenContext;
+  final Function onScreenHideButtonPressed;
+  final bool hideStatus;
+  const LocationsScreen1(
+      {Key key,
+        this.menuScreenContext,
+        this.onScreenHideButtonPressed,
+        this.hideStatus = false})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Locations Subscreen')),
+      backgroundColor: Colors.tealAccent,
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
               RaisedButton(
                 color: Colors.indigo,
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 child: Text(
-                  "Go Back to First Screen",
+                  "<- Back to main Locations page",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -143,6 +173,7 @@ class CameraScreen0 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Camera')),
       backgroundColor: Colors.deepOrangeAccent,
       body: Container(
         child: Center(
@@ -176,6 +207,7 @@ class AccountScreen0 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Account')),
       backgroundColor: Colors.pink,
       body: Container(
         child: Center(
@@ -224,6 +256,7 @@ class SettingsScreen0 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Settings')),
       backgroundColor: Colors.purple,
       body: Container(
         child: Center(
