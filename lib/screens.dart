@@ -26,13 +26,7 @@ class MainScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 30.0, vertical: 20.0),
-                child: TextField(
-                  decoration: InputDecoration(hintText: "screens.dart text field"),
-                ),
-              ),
+
               Center(
                 child: RaisedButton(
                   color: Colors.blue,
@@ -51,75 +45,7 @@ class MainScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Center(
-                child: RaisedButton(
-                  color: Colors.deepOrange,
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      backgroundColor: Colors.white,
-                      useRootNavigator: true,
-                      builder: (context) => Center(
-                        child: RaisedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          color: Colors.blue,
-                          child: Text(
-                            "Exit",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                  child: Text(
-                    "Push bottom sheet on TOP of Nav Bar",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Center(
-                child: RaisedButton(
-                  color: Colors.deepOrange,
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      backgroundColor: Colors.white,
-                      useRootNavigator: false,
-                      builder: (context) => Center(
-                        child: RaisedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          color: Colors.blue,
-                          child: Text(
-                            "Exit",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                  child: Text(
-                    "Push bottom sheet BEHIND the Nav Bar",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Center(
-                child: RaisedButton(
-                  color: Colors.lime,
-                  onPressed: () {
-                    pushDynamicScreen(context,
-                        screen: ModalScreen(), withNavBar: true);
-                  },
-                  child: Text(
-                    "Push Dynamic/Modal Screen",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
+
               Center(
                 child: RaisedButton(
                   color: Colors.purpleAccent,
