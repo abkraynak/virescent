@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
-class MainScreen extends StatelessWidget {
+class HomeScreen0 extends StatelessWidget {
   final BuildContext menuScreenContext;
   final Function onScreenHideButtonPressed;
   final bool hideStatus;
-  const MainScreen(
+  const HomeScreen0(
       {Key key,
       this.menuScreenContext,
       this.onScreenHideButtonPressed,
@@ -31,8 +31,8 @@ class MainScreen extends StatelessWidget {
                   onPressed: () {
                     pushNewScreenWithRouteSettings(
                       context,
-                      settings: RouteSettings(name: '/home'),
-                      screen: MainScreen2(),
+                      settings: RouteSettings(name: '/second'),
+                      screen: LocationsScreen0(),
                       pageTransitionAnimation:
                           PageTransitionAnimation.scaleRotate,
                     );
@@ -81,11 +81,11 @@ class MainScreen extends StatelessWidget {
   }
 }
 
-class MainScreen2 extends StatelessWidget {
+class LocationsScreen0 extends StatelessWidget {
   final BuildContext menuScreenContext;
   final Function onScreenHideButtonPressed;
   final bool hideStatus;
-  const MainScreen2(
+  const LocationsScreen0(
       {Key key,
         this.menuScreenContext,
         this.onScreenHideButtonPressed,
@@ -104,7 +104,7 @@ class MainScreen2 extends StatelessWidget {
               RaisedButton(
                 color: Colors.indigo,
                 onPressed: () {
-                  pushNewScreen(context, screen: MainScreen3());
+                  pushNewScreen(context, screen: CameraScreen0());
                 },
                 child: Text(
                   "Go to Third Screen",
@@ -129,8 +129,16 @@ class MainScreen2 extends StatelessWidget {
   }
 }
 
-class MainScreen3 extends StatelessWidget {
-  const MainScreen3({Key key}) : super(key: key);
+class CameraScreen0 extends StatelessWidget {
+  final BuildContext menuScreenContext;
+  final Function onScreenHideButtonPressed;
+  final bool hideStatus;
+  const CameraScreen0(
+      {Key key,
+        this.menuScreenContext,
+        this.onScreenHideButtonPressed,
+        this.hideStatus = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -147,6 +155,102 @@ class MainScreen3 extends StatelessWidget {
               "Go Back to Second Screen",
               style: TextStyle(color: Colors.white),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AccountScreen0 extends StatelessWidget {
+  final BuildContext menuScreenContext;
+  final Function onScreenHideButtonPressed;
+  final bool hideStatus;
+  const AccountScreen0(
+      {Key key,
+        this.menuScreenContext,
+        this.onScreenHideButtonPressed,
+        this.hideStatus = false})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.pink,
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              RaisedButton(
+                color: Colors.indigo,
+                onPressed: () {
+                  pushNewScreen(context, screen: CameraScreen0());
+                },
+                child: Text(
+                  "This is screen 4",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: Colors.indigo,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Go Back to First Screen",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SettingsScreen0 extends StatelessWidget {
+  final BuildContext menuScreenContext;
+  final Function onScreenHideButtonPressed;
+  final bool hideStatus;
+  const SettingsScreen0(
+      {Key key,
+        this.menuScreenContext,
+        this.onScreenHideButtonPressed,
+        this.hideStatus = false})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.purple,
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              RaisedButton(
+                color: Colors.indigo,
+                onPressed: () {
+                  pushNewScreen(context, screen: HomeScreen0());
+                },
+                child: Text(
+                  "This is screen 5",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: Colors.indigo,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Go Back to First Screen",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
         ),
       ),

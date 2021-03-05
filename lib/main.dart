@@ -4,7 +4,6 @@ import 'package:Virescent/color_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'screens.dart';
-import 'custom_widget_tabs.widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 void main() {
@@ -28,10 +27,13 @@ class MyApp extends StatelessWidget {
       home: LoginScreen(),
       initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        '/first': (context) => MainScreen2(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/second': (context) => MainScreen3(),
+        // When navigating to the "/" route, build the HomeScreen0 widget.
+        '/first': (context) => HomeScreen0(),
+        // When navigating to the "/second" route, build the LocationsScreen0 widget.
+        '/second': (context) => LocationsScreen0(),
+        '/third': (context) => CameraScreen0(),
+        '/fourth': (context) => AccountScreen0(),
+        '/fifth': (context) => SettingsScreen0(),
       },
     );
   }
@@ -150,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> _buildScreens() {
     return [
-      MainScreen(
+      HomeScreen0(
         menuScreenContext: widget.menuScreenContext,
         hideStatus: _hideNavBar,
         onScreenHideButtonPressed: () {
@@ -159,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
       ),
-      MainScreen2(
+      LocationsScreen0(
         menuScreenContext: widget.menuScreenContext,
         hideStatus: _hideNavBar,
         onScreenHideButtonPressed: () {
@@ -168,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
       ),
-      MainScreen(
+      CameraScreen0(
         menuScreenContext: widget.menuScreenContext,
         hideStatus: _hideNavBar,
         onScreenHideButtonPressed: () {
@@ -177,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
       ),
-      MainScreen(
+      AccountScreen0(
         menuScreenContext: widget.menuScreenContext,
         hideStatus: _hideNavBar,
         onScreenHideButtonPressed: () {
@@ -186,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
       ),
-      MainScreen(
+      SettingsScreen0(
         menuScreenContext: widget.menuScreenContext,
         hideStatus: _hideNavBar,
         onScreenHideButtonPressed: () {
@@ -262,8 +264,8 @@ class _HomeScreenState extends State<HomeScreen> {
         routeAndNavigatorSettings: RouteAndNavigatorSettings(
           initialRoute: '/',
           routes: {
-            '/first': (context) => MainScreen2(),
-            '/second': (context) => MainScreen3(),
+            '/first': (context) => HomeScreen0(),
+            '/second': (context) => LocationsScreen0(),
           },
         ),
         onWillPop: () async {
