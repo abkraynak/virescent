@@ -158,7 +158,15 @@ class MainScreen extends StatelessWidget {
 }
 
 class MainScreen2 extends StatelessWidget {
-  const MainScreen2({Key key}) : super(key: key);
+  final BuildContext menuScreenContext;
+  final Function onScreenHideButtonPressed;
+  final bool hideStatus;
+  const MainScreen2(
+      {Key key,
+        this.menuScreenContext,
+        this.onScreenHideButtonPressed,
+        this.hideStatus = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

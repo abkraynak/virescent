@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
       ),
-      MainScreen(
+      MainScreen2(
         menuScreenContext: widget.menuScreenContext,
         hideStatus: _hideNavBar,
         onScreenHideButtonPressed: () {
