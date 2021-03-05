@@ -28,12 +28,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the HomeScreen0 widget.
-        '/first': (context) => HomeScreen0(),
+        '/home': (context) => HomeScreen0(),
         // When navigating to the "/second" route, build the LocationsScreen0 widget.
-        '/second': (context) => LocationsScreen0(),
-        '/third': (context) => CameraScreen0(),
-        '/fourth': (context) => AccountScreen0(),
-        '/fifth': (context) => SettingsScreen0(),
+        '/locations': (context) => LocationsScreen0(),
+        '/camera': (context) => CameraScreen0(),
+        '/account': (context) => AccountScreen0(),
+        '/settings': (context) => SettingsScreen0(),
       },
     );
   }
@@ -264,8 +264,8 @@ class _HomeScreenState extends State<HomeScreen> {
         routeAndNavigatorSettings: RouteAndNavigatorSettings(
           initialRoute: '/',
           routes: {
-            '/first': (context) => HomeScreen0(),
-            '/second': (context) => LocationsScreen0(),
+            '/home': (context) => HomeScreen0(),
+            '/locations': (context) => LocationsScreen0(),
           },
         ),
         onWillPop: () async {

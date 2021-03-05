@@ -31,7 +31,7 @@ class HomeScreen0 extends StatelessWidget {
                   onPressed: () {
                     pushNewScreenWithRouteSettings(
                       context,
-                      settings: RouteSettings(name: '/second'),
+                      settings: RouteSettings(name: '/locations'),
                       screen: LocationsScreen0(),
                       pageTransitionAnimation:
                           PageTransitionAnimation.scaleRotate,
