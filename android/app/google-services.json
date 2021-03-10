@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1062339819323",
+    "project_id": "virescent-83ebb",
+    "storage_bucket": "virescent-83ebb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062339819323:android:ebe615e667f8099055a91e",
+        "android_client_info": {
+          "package_name": "com.example.virescent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1062339819323-4351u061o4lkhh4i629l0jqbhrje14dk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcas5_8uA2guHu092CsRNOihm50mz-Hbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1062339819323-4351u061o4lkhh4i629l0jqbhrje14dk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
