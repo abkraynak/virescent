@@ -1,5 +1,98 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:Virescent/main.dart';
+
+class LoginScreen extends StatefulWidget {
+  LoginScreen({Key key}) : super(key: key);
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // Username field
+              Padding(
+                padding: EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                      hintText: 'Username',
+                      contentPadding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50.0))),
+                ),
+              ),
+
+              // Password field
+              Padding(
+                padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      hintText: 'Password',
+                      contentPadding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50.0))),
+                ),
+              ),
+
+              // Login button
+              Padding(
+                padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
+                child: ButtonTheme(
+                  height: 56,
+                  child: RaisedButton(
+                    child: Text('Login',
+                        style: TextStyle(color: Colors.white, fontSize: 20)),
+                    color: Colors.lightGreen,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                    onPressed: () => pushNewScreen(
+                      context,
+                      screen: HomeScreen(
+                        menuScreenContext: context,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Register button
+              FlatButton(
+                  child: Text(
+                    'Register',
+                    style: TextStyle(color: Colors.grey, fontSize: 20),
+                  ),
+                  onPressed: null),
+
+              // Continue without Account button
+              FlatButton(
+                child: Text(
+                  'Continue without Account',
+                  style: TextStyle(color: Colors.grey, fontSize: 20),
+                ),
+                onPressed: () => pushNewScreen(
+                  context,
+                  screen: HomeScreen(
+                    menuScreenContext: context,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ));
+  }
+}
 
 class HomeScreen0 extends StatelessWidget {
   final BuildContext menuScreenContext;

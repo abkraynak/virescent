@@ -1,5 +1,8 @@
 import 'package:Virescent/color_constants.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:splashscreen/splashscreen.dart';
 //import 'package:Virescent/login-page.dart';
 //import 'package:Virescent/account.dart';
 import 'package:flutter/material.dart';
@@ -24,11 +27,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Virescent',
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
       ),
-      home: LoginScreen(),
+      home: IntroScreen(),
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the HomeScreen0 widget.
@@ -43,95 +47,25 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({Key key}) : super(key: key);
-
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
+class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          // Username field
-          Padding(
-            padding: EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
-            child: TextField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                  hintText: 'Username',
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50.0))),
-            ),
-          ),
-
-          // Password field
-          Padding(
-            padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
-            child: TextField(
-              keyboardType: TextInputType.emailAddress,
-              obscureText: true,
-              decoration: InputDecoration(
-                  hintText: 'Password',
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50.0))),
-            ),
-          ),
-
-          // Login button
-          Padding(
-            padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
-            child: ButtonTheme(
-              height: 56,
-              child: RaisedButton(
-                child: Text('Login',
-                    style: TextStyle(color: Colors.white, fontSize: 20)),
-                color: Colors.lightGreen,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50)),
-                onPressed: () => pushNewScreen(
-                  context,
-                  screen: HomeScreen(
-                    menuScreenContext: context,
-                  ),
-                ),
-              ),
-            ),
-          ),
-
-          // Register button
-          FlatButton(
-              child: Text(
-                'Register',
-                style: TextStyle(color: Colors.grey, fontSize: 20),
-              ),
-              onPressed: null),
-
-          // Continue without Account button
-          FlatButton(
-            child: Text(
-              'Continue without Account',
-              style: TextStyle(color: Colors.grey, fontSize: 20),
-            ),
-            onPressed: () => pushNewScreen(
-              context,
-              screen: HomeScreen(
-                menuScreenContext: context,
-              ),
-            ),
-          )
-        ],
-      ),
-    ));
+    User result = FirebaseAuth.instance.currentUser;
+    return new SplashScreen(
+        navigateAfterSeconds: result != null ? HomeScreen(
+          //uid: result.uid
+         ) : LoginScreen(),
+        seconds: 5,
+        title: new Text(
+          'Virescent',
+          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+        ),
+        image: Image.asset('assets/images/dart.png', fit: BoxFit.scaleDown),
+        backgroundColor: Colors.white,
+        styleTextUnderTheLoader: new TextStyle(),
+        photoSize: 100.0,
+        onClick: () => print("flutter"),
+        loaderColor: Colors.green);
   }
 }
 
