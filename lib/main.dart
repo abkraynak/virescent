@@ -1,4 +1,5 @@
 import 'package:Virescent/color_constants.dart';
+import 'package:firebase_core/firebase_core.dart';
 //import 'package:Virescent/login-page.dart';
 //import 'package:Virescent/account.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,10 @@ import 'package:flutter/services.dart';
 import 'screens.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
-void main() {
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.lightGreen[300],
     statusBarColor: kThemeColor,
