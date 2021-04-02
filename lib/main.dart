@@ -4,11 +4,11 @@ import 'package:flutter/services.dart';
 
 import 'constants/colors.dart';
 import 'constants/route_names.dart';
-import 'pages/account_page.dart';
-import 'pages/camera_page.dart';
-import 'pages/home_page.dart';
-import 'pages/locations_page.dart';
-import 'pages/settings_page.dart';
+import 'pages/account.dart';
+import 'pages/camera.dart';
+import 'pages/home.dart';
+import 'pages/locations.dart';
+import 'pages/settings.dart';
 import 'pages/signup.dart';
 import 'widgets/app_route_observer.dart';
 

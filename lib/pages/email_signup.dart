@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
-import 'home_page.dart';
+import 'home.dart';
 
 class EmailSignUpPage extends StatefulWidget {
   @override
