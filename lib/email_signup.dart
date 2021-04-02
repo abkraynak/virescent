@@ -136,7 +136,6 @@ class _EmailSignUpState extends State<EmailSignUp> {
         .then((result) {
       dbRef.child(result.user.uid).set({
         "email": emailController.text,
-        "age": ageController.text,
         "name": nameController.text
       }).then((res) {
         isLoading = false;
