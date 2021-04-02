@@ -1,16 +1,8 @@
-# virescent
-
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Virescent
+Mobile application to reward recycling and promote sustainability 
+***
+## Introduction
+Virescent is a new mobile application that makes recycling easy. 
+Quickly find nearby recycle bins to make recycling part of your routine. 
+Submit photos of your recycling and earn credits that can be redeemed for rewards. 
+Compete with your family, friends, and neighbors to make your community more sustainable.
