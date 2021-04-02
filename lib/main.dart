@@ -1,16 +1,15 @@
-import 'package:Virescent/constants/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'constants/route_names.dart';
 import 'constants/colors.dart';
-import 'pages/signup.dart';
+import 'constants/route_names.dart';
+import 'pages/account_page.dart';
+import 'pages/camera_page.dart';
 import 'pages/home_page.dart';
 import 'pages/locations_page.dart';
-import 'pages/camera_page.dart';
-import 'pages/account_page.dart';
 import 'pages/settings_page.dart';
+import 'pages/signup.dart';
 import 'widgets/app_route_observer.dart';
 
 
