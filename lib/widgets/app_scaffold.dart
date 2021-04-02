@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'app_drawer.dart';
 
-/// A responsive scaffold for our application.
-/// Displays the navigation drawer alongside the [Scaffold] if the screen/window size is large enough
 class AppScaffold extends StatelessWidget {
   const AppScaffold({@required this.body, @required this.pageTitle, Key key})
       : super(key: key);

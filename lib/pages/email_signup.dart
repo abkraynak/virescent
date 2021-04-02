@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
 import '../constants/colors.dart';
+import 'home_page.dart';
 
 class EmailSignUpPage extends StatefulWidget {
   @override
