@@ -81,7 +81,9 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                           logInToFb();
                         }
                       },
-                      child: Text('Log In'),
+                      child: Text('Log In',
+                          style: TextStyle(color: Colors.white, fontSize: 18)),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     ),
                   )
                 ]))));
