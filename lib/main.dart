@@ -11,6 +11,10 @@ import 'screens.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 
+import 'constants/page_titles.dart';
+import 'constants/route_names.dart';
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -40,15 +44,15 @@ class MyApp extends StatelessWidget {
         )
       ),
       home: IntroScreen(),
-      initialRoute: '/',
+      initialRoute: RouteNames.home,
       routes: {
         // When navigating to the "/" route, build the HomeScreen0 widget.
-        '/home': (context) => HomeScreen0(),
+        RouteNames.home: (context) => HomeScreen0(),
         // When navigating to the "/second" route, build the LocationsScreen0 widget.
-        '/locations': (context) => LocationsScreen0(),
-        '/camera': (context) => CameraScreen0(),
-        '/account': (context) => AccountScreen0(),
-        '/settings': (context) => SettingsScreen0(),
+        RouteNames.locations: (context) => LocationsScreen0(),
+        RouteNames.camera: (context) => CameraScreen0(),
+        RouteNames.account: (context) => AccountScreen0(),
+        RouteNames.settings: (context) => SettingsScreen0(),
       },
     );
   }
