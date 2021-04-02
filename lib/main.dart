@@ -31,6 +31,13 @@ class MyApp extends StatelessWidget {
       title: 'Virescent',
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
+        pageTransitionsTheme: PageTransitionsTheme(
+          builders: Map<TargetPlatform,
+              _InanimatePageTransitionsBuilder>.fromIterable(
+              TargetPlatform.values.toList(),
+          key: (dynamic k) => k,
+          value: (dynamic _) => const _InanimatePageTransitionsBuilder()),
+        )
       ),
       home: IntroScreen(),
       initialRoute: '/',
@@ -44,6 +51,20 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => SettingsScreen0(),
       },
     );
+  }
+}
+
+class _InanimatePageTransitionsBuilder extends PageTransitionsBuilder {
+  const _InanimatePageTransitionsBuilder();
+
+  @override
+  Widget buildTransitions<T>(
+      PageRoute<T> route,
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child) {
+    return child;
   }
 }
 
