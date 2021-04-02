@@ -17,11 +17,10 @@ class SignUpPage extends StatelessWidget {
               Widget>[
             Padding(
               padding: EdgeInsets.all(10.0),
-              child: Text("Virescent",
+              child: Text("Welcome to Virescent",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                      fontFamily: 'Roboto')),
+                      fontSize: 30)),
             ),
             Padding(
                 padding: EdgeInsets.all(10.0),
@@ -45,8 +44,8 @@ class SignUpPage extends StatelessWidget {
             Padding(
                 padding: EdgeInsets.all(10.0),
                 child: SignInButton(
-                  Buttons.Twitter,
-                  text: "Sign up with Twitter",
+                  Buttons.FacebookNew,
+                  text: "Sign up with Facebook",
                   onPressed: () {},
                 )),
             Padding(

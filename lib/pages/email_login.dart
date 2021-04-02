@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'home_page.dart';
+import '../constants/colors.dart';
 
 class EmailLogInPage extends StatefulWidget {
   @override
@@ -28,9 +29,9 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                     child: TextFormField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        labelText: "Enter Email Address",
+                        labelText: "  Email Address",
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(50.0),
                         ),
                       ),
                       // The validator receives the text that the user has entered.
@@ -50,9 +51,9 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                       obscureText: true,
                       controller: passwordController,
                       decoration: InputDecoration(
-                        labelText: "Enter Password",
+                        labelText: "  Password",
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(50.0),
                         ),
                       ),
                       // The validator receives the text that the user has entered.
@@ -71,7 +72,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                     child: isLoading
                         ? CircularProgressIndicator()
                         : RaisedButton(
-                      color: Colors.lightBlue,
+                      color: themeColor,
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           setState(() {
@@ -80,7 +81,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                           logInToFb();
                         }
                       },
-                      child: Text('Submit'),
+                      child: Text('Log In'),
                     ),
                   )
                 ]))));
