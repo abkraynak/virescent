@@ -1,16 +1,8 @@
 import 'package:Virescent/constants/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:splashscreen/splashscreen.dart';
-//import 'package:Virescent/login-page.dart';
-//import 'package:Virescent/account.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
-
-import 'constants/page_titles.dart';
 import 'constants/route_names.dart';
 import 'constants/colors.dart';
 import 'pages/signup.dart';
