@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
       ),
       home: IntroScreen(),
       initialRoute: RouteNames.home,
+
       routes: {
         // When navigating to the "/" route, build the HomeScreen0 widget.
         RouteNames.home: (context) => HomeScreen0(),
