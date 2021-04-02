@@ -13,6 +13,12 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import 'constants/page_titles.dart';
 import 'constants/route_names.dart';
+import 'pages/home_page.dart';
+import 'pages/locations_page.dart';
+import 'pages/camera_page.dart';
+import 'pages/account_page.dart';
+import 'pages/settings_page.dart';
+import 'widgets/app_route_observer.dart';
 
 
 void main() async {
@@ -43,17 +49,16 @@ class MyApp extends StatelessWidget {
           value: (dynamic _) => const _InanimatePageTransitionsBuilder()),
         )
       ),
-      home: IntroScreen(),
       initialRoute: RouteNames.home,
-
+      navigatorObservers: [AppRouteObserver()],
       routes: {
         // When navigating to the "/" route, build the HomeScreen0 widget.
-        RouteNames.home: (context) => HomeScreen0(),
+        RouteNames.home: (context) => const HomePage(),
         // When navigating to the "/second" route, build the LocationsScreen0 widget.
-        RouteNames.locations: (context) => LocationsScreen0(),
-        RouteNames.camera: (context) => CameraScreen0(),
-        RouteNames.account: (context) => AccountScreen0(),
-        RouteNames.settings: (context) => SettingsScreen0(),
+        RouteNames.locations: (context) => const LocationsPage(),
+        RouteNames.camera: (context) => const CameraPage(),
+        RouteNames.account: (context) => const AccountPage(),
+        RouteNames.settings: (context) => const SettingsPage(),
       },
     );
   }
