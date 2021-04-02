@@ -105,7 +105,9 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
                           registerToFb();
                         }
                       },
-                      child: Text('Create Account'),
+                      child: Text('Create Account',
+                          style: TextStyle(color: Colors.white, fontSize: 18)),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     ),
                   )
                 ]))));
