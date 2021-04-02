@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 import '../constants/page_titles.dart';
 import '../constants/route_names.dart';
 import 'app_route_observer.dart';
 
-/// The navigation drawer for the app.
-/// This listens to changes in the route to update which page is currently been shown
 class AppDrawer extends StatefulWidget {
   const AppDrawer({@required this.permanentlyDisplay, Key key})
       : super(key: key);
@@ -57,8 +57,9 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
               padding: EdgeInsets.zero,
               children: [
                 const UserAccountsDrawerHeader(
+                  // Replace with the user's name, email, and photo (from Firebase)
                   accountName: Text('User'),
-                  accountEmail: Text('user@email.com'),
+                  accountEmail: Text('email@.com'),
                   currentAccountPicture: CircleAvatar(
                     child: Icon(Icons.android),
                   ),
@@ -104,6 +105,15 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   },
                   selected: _selectedRoute == RouteNames.settings,
                 ),
+                ListTile(
+                  // Need to fix to actually sign out
+                  leading: const Icon(Icons.logout),
+                  title: const Text('Logout'),
+                  onTap: () async {
+                    await _navigateTo(context, RouteNames.signup);
+                  },
+                  selected: _selectedRoute == RouteNames.signup,
+                ),
               ],
             ),
           ),
@@ -116,8 +126,6 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
     );
   }
 
-  /// Closes the drawer if applicable (which is only when it's not been displayed permanently) and navigates to the specified route
-  /// In a mobile layout, the a modal drawer is used so we need to explicitly close it when the user selects a page to display
   Future<void> _navigateTo(BuildContext context, String routeName) async {
     if (widget.permanentlyDisplay) {
       Navigator.pop(context);
