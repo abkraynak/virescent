@@ -6,6 +6,7 @@ import 'constants/colors.dart';
 import 'constants/route_names.dart';
 import 'pages/account.dart';
 import 'pages/camera.dart';
+import 'pages/change_pw.dart';
 import 'pages/home.dart';
 import 'pages/locations.dart';
 import 'pages/settings.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         RouteNames.account: (context) => const AccountPage(),
         RouteNames.settings: (context) => const SettingsPage(),
         RouteNames.signup: (context) => SignUpPage(),
+        RouteNames.changepw: (context) => ChangePasswordPage(),
       },
     );
   }

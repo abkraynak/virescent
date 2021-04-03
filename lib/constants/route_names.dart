@@ -8,5 +8,5 @@ class RouteNames {
   static const String rewards = '/rewards';
   static const String account = '/account';
   static const String settings = '/settings';
-
+  static const String changepw = 'settings/changepw';
 }
