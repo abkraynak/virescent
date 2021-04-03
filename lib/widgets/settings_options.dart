@@ -9,7 +9,30 @@ class SettingsOptions extends StatelessWidget {
           child: ListTile(
           leading: const Icon(Icons.security),
           title: const Text('Change password'),
-          onTap: () {},
+          onTap: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Change password"),
+                    content: Text("Enter new password"),
+                    actions: [
+                      FlatButton(
+                        child: Text("CANCEL"),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      FlatButton(
+                        child: Text("SUBMIT"),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      )
+                    ],
+                  );
+                });
+          },
           )
         ),
         SwitchListTile(
