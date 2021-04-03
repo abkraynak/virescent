@@ -5,10 +5,12 @@ class SettingsOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        ListTile(
-          title: Text('Option 1'),
-          subtitle: Text('Description'),
+        Card(
+          child: ListTile(
+          leading: const Icon(Icons.security),
+          title: const Text('Change password'),
           onTap: () {},
+          )
         ),
         SwitchListTile(
           value: false,
