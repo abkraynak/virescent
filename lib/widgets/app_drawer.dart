@@ -59,7 +59,6 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
-
     return Drawer(
       child: Row(
         children: [
@@ -68,7 +67,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
               padding: EdgeInsets.zero,
               children: [
                 UserAccountsDrawerHeader(
-                  accountName: Text("${user?.displayName}"),
+                  accountName: null, //Text("${user?.displayName}"),
                   accountEmail: Text("${user?.email}"),
                 ),
                 ListTile(
