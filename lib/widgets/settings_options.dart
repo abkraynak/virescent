@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SettingsOptions extends StatelessWidget {
-  @override
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
@@ -10,29 +9,8 @@ class SettingsOptions extends StatelessWidget {
           leading: const Icon(Icons.security),
           title: const Text('Change password'),
           onTap: () {
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text("Change password"),
-                    content: Text("Enter new password"),
-                    actions: [
-                      FlatButton(
-                        child: Text("CANCEL"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                      FlatButton(
-                        child: Text("SUBMIT"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      )
-                    ],
-                  );
-                });
-          },
+
+          }
           )
         ),
         SwitchListTile(
