@@ -78,6 +78,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   },
                   selected: _selectedRoute == RouteNames.locations,
                 ),
+                /*
                 ListTile(
                   leading: const Icon(Icons.camera_alt_outlined),
                   title: const Text(PageTitles.camera),
@@ -86,6 +87,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   },
                   selected: _selectedRoute == RouteNames.camera,
                 ),
+                 */
                 ListTile(
                   leading: const Icon(Icons.account_circle),
                   title: const Text(PageTitles.account),
