@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/page_titles.dart';
+import '../widgets/account_info.dart';
 import '../widgets/app_scaffold.dart';
 
 class AccountPage extends StatelessWidget {
@@ -8,11 +9,9 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppScaffold(
+    return AppScaffold(
       pageTitle: PageTitles.account,
-      body: Center(
-        child: Text('This is the account page'),
-      ),
+      body: AccountInfo()
     );
   }
 }

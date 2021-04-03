@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/page_titles.dart';
 import '../widgets/app_scaffold.dart';
+import '../widgets/home_dashboard.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({this.uid});
@@ -9,11 +10,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppScaffold(
+    return AppScaffold(
       pageTitle: PageTitles.home,
-      body: Center(
-        child: Text('This is the home page'),
-      ),
+      body: HomeDashboard(),
     );
   }
 }
