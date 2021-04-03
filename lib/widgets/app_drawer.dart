@@ -79,7 +79,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   selected: _selectedRoute == RouteNames.home,
                 ),
                 ListTile(
-                  leading: const Icon(Icons.map_outlined),
+                  leading: const Icon(Icons.map),
                   title: const Text(PageTitles.locations),
                   onTap: () async {
                     await _navigateTo(context, RouteNames.locations);
