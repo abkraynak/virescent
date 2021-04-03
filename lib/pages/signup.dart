@@ -18,9 +18,11 @@ class SignUpPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(10.0),
               child: Text("Welcome to Virescent",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30)),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Text("Let's get started!", style: TextStyle(fontSize: 20)),
             ),
             Padding(
                 padding: EdgeInsets.all(10.0),
@@ -30,7 +32,8 @@ class SignUpPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => EmailSignUpPage()),
+                      MaterialPageRoute(
+                          builder: (context) => EmailSignUpPage()),
                     );
                   },
                 )),
@@ -58,7 +61,8 @@ class SignUpPage extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => EmailLogInPage()),
+                        MaterialPageRoute(
+                            builder: (context) => EmailLogInPage()),
                       );
                     }))
           ]),
