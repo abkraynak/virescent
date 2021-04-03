@@ -26,6 +26,15 @@ class SettingsOptions extends StatelessWidget {
         ),
         CheckboxListTile(
             value: true, title: Text('Option 4'), onChanged: (value) {}),
+        Card(
+            child: ListTile(
+                leading: const Icon(Icons.info),
+                title: const Text('About'),
+                onTap: () {
+
+                }
+            )
+        ),
       ],
     );
   }
