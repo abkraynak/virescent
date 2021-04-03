@@ -31,6 +31,7 @@ class AppScaffold extends StatelessWidget {
             drawer: displayMobileLayout
                 ? const AppDrawer(
                     permanentlyDisplay: false,
+                    uid: '0MmqnELJj6fuBbKJtuQ69NpPQS42',
                   )
                 : null,
             body: body,

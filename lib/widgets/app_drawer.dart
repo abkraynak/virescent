@@ -3,16 +3,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-
 import '../constants/page_titles.dart';
 import '../constants/route_names.dart';
 import 'app_route_observer.dart';
 
 class AppDrawer extends StatefulWidget {
-  const AppDrawer({@required this.permanentlyDisplay, Key key})
+  const AppDrawer({@required this.permanentlyDisplay, Key key, this.uid})
       : super(key: key);
 
   final bool permanentlyDisplay;
+  final String uid;
 
   @override
   _AppDrawerState createState() => _AppDrawerState();
@@ -21,10 +21,19 @@ class AppDrawer extends StatefulWidget {
 class _AppDrawerState extends State<AppDrawer> with RouteAware {
   String _selectedRoute;
   AppRouteObserver _routeObserver;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User user;
   @override
   void initState() {
+
     super.initState();
+    initUser();
     _routeObserver = AppRouteObserver();
+  }
+
+  initUser() {
+    user = _auth.currentUser;
+    setState(() {});
   }
 
   @override
@@ -51,6 +60,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
+
     return Drawer(
       child: Row(
         children: [
@@ -58,10 +68,9 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
             child: ListView(
               padding: EdgeInsets.zero,
               children: [
-                const UserAccountsDrawerHeader(
-                  // Replace with the user's name, email, and photo (from Firebase)
-                  accountName: Text('My Name'),
-                  accountEmail: Text('email@example.com'),
+                UserAccountsDrawerHeader(
+                  accountName: Text("${user?.displayName}"),
+                  accountEmail: Text("${user?.email}"),
                 ),
                 ListTile(
                   leading: const Icon(Icons.home),
@@ -114,7 +123,9 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                     FirebaseAuth auth = FirebaseAuth.instance;
                     auth.signOut().then((res) {
                       Navigator.pushAndRemoveUntil(
-                          context, MaterialPageRoute(builder: (context) => SignUpPage()), (route) => false);
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUpPage()),
+                          (route) => false);
                     });
                   },
                 )
