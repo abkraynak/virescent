@@ -47,18 +47,17 @@ class SignUpPage extends StatelessWidget {
             Padding(
                 padding: EdgeInsets.all(10.0),
                 child: SignInButton(
-                  Buttons.FacebookNew,
+                  Buttons.Facebook,
                   text: "Sign up with Facebook",
                   onPressed: () {},
                 )),
             Padding(
                 padding: EdgeInsets.all(10.0),
-                child: GestureDetector(
+                child: TextButton(
                     child: Text("Log In Using Email",
                         style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Colors.blue)),
-                    onTap: () {
+                            fontSize: 16, color: Colors.blue)),
+                    onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
