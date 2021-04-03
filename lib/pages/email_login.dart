@@ -79,6 +79,9 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                             isLoading = true;
                           });
                           logInToFb();
+                          setState(() {
+                            isLoading = false;
+                          });
                         }
                       },
                       child: Text('Log In',
@@ -109,7 +112,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
               content: Text(err.message),
               actions: [
                 FlatButton(
-                  child: Text("Ok"),
+                  child: Text("Close"),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },

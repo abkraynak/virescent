@@ -137,7 +137,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
               content: Text(err.message),
               actions: [
                 FlatButton(
-                  child: Text("Ok"),
+                  child: Text("Close"),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
