@@ -1,4 +1,8 @@
+import 'package:Virescent/pages/signup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+
 
 import '../constants/page_titles.dart';
 import '../constants/route_names.dart';
@@ -106,11 +110,14 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   // Need to fix to actually sign out
                   leading: const Icon(Icons.logout),
                   title: const Text('Logout'),
-                  onTap: () async {
-                    await _navigateTo(context, RouteNames.signup);
+                  onTap: () {
+                    FirebaseAuth auth = FirebaseAuth.instance;
+                    auth.signOut().then((res) {
+                      Navigator.pushAndRemoveUntil(
+                          context, MaterialPageRoute(builder: (context) => SignUpPage()), (route) => false);
+                    });
                   },
-                  selected: _selectedRoute == RouteNames.signup,
-                ),
+                )
               ],
             ),
           ),
