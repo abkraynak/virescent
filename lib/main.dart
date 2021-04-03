@@ -10,6 +10,7 @@ import 'pages/home.dart';
 import 'pages/locations.dart';
 import 'pages/settings.dart';
 import 'pages/signup.dart';
+import 'pages/rewards.dart';
 import 'widgets/app_route_observer.dart';
 
 
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         RouteNames.home: (context) => HomePage(),
         RouteNames.locations: (context) => const LocationsPage(),
         RouteNames.camera: (context) => const CameraPage(),
+        RouteNames.rewards: (context) => const RewardsPage(),
         RouteNames.account: (context) => const AccountPage(),
         RouteNames.settings: (context) => const SettingsPage(),
         RouteNames.signup: (context) => SignUpPage(),
