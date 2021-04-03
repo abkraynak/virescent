@@ -1,5 +1,7 @@
+import 'package:Virescent/constants/route_names.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/colors.dart';
 import 'app_drawer.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -28,10 +30,17 @@ class AppScaffold extends StatelessWidget {
             ),
             drawer: displayMobileLayout
                 ? const AppDrawer(
-              permanentlyDisplay: false,
-            )
+                    permanentlyDisplay: false,
+                  )
                 : null,
             body: body,
+            floatingActionButton: FloatingActionButton(
+              onPressed: () async {
+                await Navigator.pushNamed(context, RouteNames.camera);
+              },
+              child: Icon(Icons.camera_alt),
+              backgroundColor: accentColor,
+            ),
           ),
         )
       ],
