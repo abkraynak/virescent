@@ -56,11 +56,8 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
               children: [
                 const UserAccountsDrawerHeader(
                   // Replace with the user's name, email, and photo (from Firebase)
-                  accountName: Text('User'),
-                  accountEmail: Text('email@.com'),
-                  currentAccountPicture: CircleAvatar(
-                    child: Icon(Icons.android),
-                  ),
+                  accountName: Text('My Name'),
+                  accountEmail: Text('email@example.com'),
                 ),
                 ListTile(
                   leading: const Icon(Icons.home),
