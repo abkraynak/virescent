@@ -14,8 +14,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User user;
 
-  TextEditingController oldPasswordController = TextEditingController();
-  TextEditingController newPasswordController = TextEditingController();
+  TextEditingController newPassword1Controller = TextEditingController();
+  TextEditingController newPassword2Controller = TextEditingController();
 
   bool isLoading = false;
 
@@ -58,7 +58,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: TextFormField(
-                  controller: newPasswordController,
+                  obscureText: true,
+                  controller: newPassword1Controller,
                   decoration: InputDecoration(
                     labelText: "  New password",
                     enabledBorder: OutlineInputBorder(
@@ -78,7 +79,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: TextFormField(
-                  controller: newPasswordController,
+                  obscureText: true,
+                  controller: newPassword2Controller,
                   decoration: InputDecoration(
                     labelText: "  New password, again",
                     enabledBorder: OutlineInputBorder(
@@ -90,6 +92,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       return 'Enter Password';
                     } else if (value.length < 6) {
                       return 'Password must be atleast 6 characters!';
+                    } else if (value != newPassword1Controller.text) {
+                      return 'Passwords must match';
                     }
                     return null;
                   },
@@ -120,7 +124,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   }
   void changePassword() async{
     //Create an instance of the current user.
-    user.updatePassword(newPasswordController.text).then((_){
+    user.updatePassword(newPassword2Controller.text).then((_){
       print("Successfully changed password");
     }).catchError((error){
       print("Password can't be changed" + error.toString());
