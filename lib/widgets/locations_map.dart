@@ -5,7 +5,7 @@ class LocationsMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('This is the NEW locations page'),
+        child: Text('This is the Locations page'),
       ),
     );
   }

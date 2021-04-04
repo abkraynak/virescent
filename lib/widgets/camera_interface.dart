@@ -5,7 +5,7 @@ class CameraInterface extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('This is the NEW camera page'),
+        child: Text('This is the Camera page'),
       ),
     );
   }

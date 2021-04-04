@@ -5,7 +5,7 @@ class AccountInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('This is the NEW account page'),
+        child: Text('This is the Account page'),
       ),
     );
   }
