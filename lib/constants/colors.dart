@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
 
-Color themeColor = Colors.lightGreen;
-Color accentColor = Colors.lightGreen[200];
+class ThemeColors {
+  static Color main = Colors.lightGreen;
+  static Color accent = Colors.lightGreen[300];
+}

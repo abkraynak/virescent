@@ -40,7 +40,7 @@ class AppScaffold extends StatelessWidget {
                 await Navigator.pushNamed(context, RouteNames.camera);
               },
               child: Icon(Icons.camera_alt),
-              backgroundColor: accentColor,
+              backgroundColor: ThemeColors.accent,
             ),
           ),
         )

@@ -96,7 +96,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
                     child: isLoading
                         ? CircularProgressIndicator()
                         : RaisedButton(
-                      color: themeColor,
+                      color: ThemeColors.main,
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           setState(() {

@@ -72,7 +72,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                     child: isLoading
                         ? CircularProgressIndicator()
                         : RaisedButton(
-                      color: themeColor,
+                      color: ThemeColors.main,
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           setState(() {
