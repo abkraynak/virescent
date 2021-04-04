@@ -40,28 +40,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             key: _formKey,
             child: SingleChildScrollView(
                 child: Column(children: <Widget>[
-                  /*
-              Padding(
-                padding: EdgeInsets.all(20.0),
-                child: TextFormField(
-                  controller: oldPasswordController,
-                  decoration: InputDecoration(
-                    labelText: "  Current password",
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                  ),
-                ),
-              ),
-
-                   */
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: TextFormField(
                   obscureText: true,
                   controller: newPassword1Controller,
                   decoration: InputDecoration(
-                    labelText: "  New password",
+                    labelText: '  New password',
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50.0),
                     ),
@@ -82,7 +67,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   obscureText: true,
                   controller: newPassword2Controller,
                   decoration: InputDecoration(
-                    labelText: "  New password, again",
+                    labelText: '  New password, again',
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50.0),
                     ),
@@ -125,10 +110,40 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   void changePassword() async{
     //Create an instance of the current user.
     user.updatePassword(newPassword2Controller.text).then((_){
-      print("Successfully changed password");
-    }).catchError((error){
-      print("Password can't be changed" + error.toString());
-      //This might happen, when the wrong password is in, the user isn't found, or if the user hasn't logged in recently.
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Success!'),
+              content: Text('Your password was successfully updated'),
+              actions: [
+                FlatButton(
+                  child: Text('CLOSE'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    }).catchError((err){
+      print(err.message);
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text(err.message),
+              actions: [
+                FlatButton(
+                  child: Text('CLOSE'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
     });
   }
 }
