@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Virescent',
       theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
+        primarySwatch: ThemeColors.main,
         pageTransitionsTheme: PageTransitionsTheme(
           builders: Map<TargetPlatform,
               _InanimatePageTransitionsBuilder>.fromIterable(

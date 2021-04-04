@@ -1,6 +1,6 @@
 class RouteNames {
-  static const String home = '/home';
   static const String signup = '/';
+  static const String home = '/home';
   static const String email_signup = '/email_signup';
   static const String email_login = '/email_login';
   static const String locations = '/locations';
