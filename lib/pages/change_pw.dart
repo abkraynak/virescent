@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../constants/colors.dart';
+import '../constants/page_titles.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   @override
@@ -9,7 +10,6 @@ class ChangePasswordPage extends StatefulWidget {
 }
 
 class _ChangePasswordPageState extends State<ChangePasswordPage> {
-  final String title = "Change Password";
   final _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User user;
@@ -34,7 +34,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(this.title),
+          title: Text(PageTitles.changepw),
         ),
         body: Form(
             key: _formKey,

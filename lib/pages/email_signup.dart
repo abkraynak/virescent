@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
+import '../constants/page_titles.dart';
 import 'home.dart';
 
 class EmailSignUpPage extends StatefulWidget {
@@ -24,7 +25,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Sign Up")),
+        appBar: AppBar(title: Text(PageTitles.emailSignUp)),
         body: Form(
             key: _formKey,
             child: SingleChildScrollView(

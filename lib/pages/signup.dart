@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
+import '../constants/page_titles.dart';
 import 'email_login.dart';
 import 'email_signup.dart';
 
 class SignUpPage extends StatelessWidget {
-  final String title = "Sign Up";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(this.title),
+          title: Text(PageTitles.signUp),
         ),
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <

@@ -1,7 +1,9 @@
+import 'package:Virescent/constants/page_titles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
+import '../constants/page_titles.dart';
 import 'home.dart';
 
 class EmailLogInPage extends StatefulWidget {
@@ -19,7 +21,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Login")),
+        appBar: AppBar(title: Text(PageTitles.emailLogin)),
         body: Form(
             key: _formKey,
             child: SingleChildScrollView(
