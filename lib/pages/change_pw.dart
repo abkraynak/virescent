@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../constants/colors.dart';
 
@@ -10,8 +11,24 @@ class ChangePasswordPage extends StatefulWidget {
 class _ChangePasswordPageState extends State<ChangePasswordPage> {
   final String title = "Change Password";
   final _formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User user;
+
+  TextEditingController oldPasswordController = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
+
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    initUser();
+  }
+
+  initUser() {
+    user = _auth.currentUser;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +40,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             key: _formKey,
             child: SingleChildScrollView(
                 child: Column(children: <Widget>[
+                  /*
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: TextFormField(
-                  controller: emailController,
+                  controller: oldPasswordController,
                   decoration: InputDecoration(
                     labelText: "  Current password",
                     enabledBorder: OutlineInputBorder(
@@ -35,35 +53,63 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   ),
                 ),
               ),
+
+                   */
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: TextFormField(
-                  controller: emailController,
+                  controller: newPasswordController,
                   decoration: InputDecoration(
                     labelText: "  New password",
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50.0),
                     ),
                   ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Enter Password';
+                    } else if (value.length < 6) {
+                      return 'Password must be atleast 6 characters!';
+                    }
+                    return null;
+                  },
                 ),
               ),
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: TextFormField(
-                  controller: emailController,
+                  controller: newPasswordController,
                   decoration: InputDecoration(
                     labelText: "  New password, again",
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50.0),
                     ),
                   ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Enter Password';
+                    } else if (value.length < 6) {
+                      return 'Password must be atleast 6 characters!';
+                    }
+                    return null;
+                  },
                 ),
               ),
               Padding(
                 padding: EdgeInsets.all(20.0),
-                child: RaisedButton(
+                child: isLoading ? CircularProgressIndicator() : RaisedButton(
                   color: ThemeColors.raisedButton,
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      changePassword();
+                      setState(() {
+                        isLoading = false;
+                      });
+                    }
+                  },
                   child: Text('Change Password',
                       style: TextStyle(color: ThemeColors.raisedButtonText, fontSize: 18)),
                   shape: RoundedRectangleBorder(
@@ -72,4 +118,14 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               )
             ]))));
   }
+  void changePassword() async{
+    //Create an instance of the current user.
+    user.updatePassword(newPasswordController.text).then((_){
+      print("Successfully changed password");
+    }).catchError((error){
+      print("Password can't be changed" + error.toString());
+      //This might happen, when the wrong password is in, the user isn't found, or if the user hasn't logged in recently.
+    });
+  }
 }
+
