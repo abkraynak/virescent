@@ -1,5 +1,5 @@
 name: Virescent
-description: Mobile application to make recycling easier.
+description: Mobile application to reward recycling and promote sustainability
 
 publish_to: 'none'
 
@@ -15,6 +15,7 @@ dependencies:
   firebase_database: ^4.1.1
   firebase_auth: ^0.18.1+2
   flutter_signin_button: ^1.0.0
+  google_maps_flutter: ^2.0.1
 
   cupertino_icons: ^1.0.0
 
