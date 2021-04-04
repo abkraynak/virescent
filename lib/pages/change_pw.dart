@@ -62,10 +62,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: RaisedButton(
-                  color: ThemeColors.main,
+                  color: ThemeColors.raisedButton,
                   onPressed: () {},
                   child: Text('Change Password',
-                      style: TextStyle(color: Colors.white, fontSize: 18)),
+                      style: TextStyle(color: ThemeColors.raisedButtonText, fontSize: 18)),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50)),
                 ),

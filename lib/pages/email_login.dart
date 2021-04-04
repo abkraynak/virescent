@@ -72,7 +72,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                     child: isLoading
                         ? CircularProgressIndicator()
                         : RaisedButton(
-                      color: ThemeColors.main,
+                      color: ThemeColors.raisedButton,
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           setState(() {
@@ -85,7 +85,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                         }
                       },
                       child: Text('Log In',
-                          style: TextStyle(color: Colors.white, fontSize: 18)),
+                          style: TextStyle(color: ThemeColors.raisedButtonText, fontSize: 18)),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     ),
                   )

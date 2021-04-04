@@ -96,7 +96,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
                     child: isLoading
                         ? CircularProgressIndicator()
                         : RaisedButton(
-                      color: ThemeColors.main,
+                      color: ThemeColors.raisedButton,
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           setState(() {
@@ -106,7 +106,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
                         }
                       },
                       child: Text('Create Account',
-                          style: TextStyle(color: Colors.white, fontSize: 18)),
+                          style: TextStyle(color: ThemeColors.raisedButtonText, fontSize: 18)),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     ),
                   )
