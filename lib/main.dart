@@ -1,3 +1,4 @@
+import 'package:Virescent/pages/about.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         RouteNames.settings: (context) => const SettingsPage(),
         RouteNames.signup: (context) => SignUpPage(),
         RouteNames.changepw: (context) => ChangePasswordPage(),
+        RouteNames.about: (context) => AboutPage(),
       },
     );
   }

@@ -9,4 +9,5 @@ class RouteNames {
   static const String account = '/account';
   static const String settings = '/settings';
   static const String changepw = 'settings/changepw';
+  static const String about = '/settings/about';
 }

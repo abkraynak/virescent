@@ -1,6 +1,8 @@
+import 'package:Virescent/pages/about.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/change_pw.dart';
+import '../pages/about.dart';
 
 class SettingsOptions extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -35,7 +37,12 @@ class SettingsOptions extends StatelessWidget {
             child: ListTile(
                 leading: const Icon(Icons.info),
                 title: const Text('About'),
-                onTap: () {})),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AboutPage()));
+                })),
       ],
     );
   }
