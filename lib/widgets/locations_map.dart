@@ -9,7 +9,7 @@ class LocationsMap extends StatefulWidget {
 class _LocationsMapState extends State<LocationsMap> {
   GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(25.761681, -80.191788);
+  final LatLng _center = const LatLng(25.761681, -80.191788); // Miami FL
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
