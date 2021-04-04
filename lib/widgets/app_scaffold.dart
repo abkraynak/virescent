@@ -39,7 +39,7 @@ class AppScaffold extends StatelessWidget {
               onPressed: () async {
                 await Navigator.pushNamed(context, RouteNames.camera);
               },
-              child: Icon(Icons.camera_alt),
+              child: Icon(Icons.camera_alt_rounded, color: ThemeColors.fabIcon),
               backgroundColor: ThemeColors.fab,
             ),
           ),
