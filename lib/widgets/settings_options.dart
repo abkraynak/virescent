@@ -16,6 +16,7 @@ class SettingsOptions extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => ChangePasswordPage()));
                 })),
+        /*
         SwitchListTile(
           value: false,
           title: Text('Option 2'),
@@ -29,6 +30,7 @@ class SettingsOptions extends StatelessWidget {
         ),
         CheckboxListTile(
             value: true, title: Text('Option 4'), onChanged: (value) {}),
+         */
         Card(
             child: ListTile(
                 leading: const Icon(Icons.info),
