@@ -48,8 +48,8 @@ class _CameraInterfaceState extends State<CameraInterface> {
     super.dispose();
   }
 
-  pickImage() async {
-    var image = await picker.getImage(source: ImageSource.camera);
+  getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
     if (image == null) return null;
 
     setState(() {
@@ -60,7 +60,7 @@ class _CameraInterfaceState extends State<CameraInterface> {
   }
 
   pickGalleryImage() async {
-    var image = await picker.getImage(source: ImageSource.gallery);
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (image == null) return null;
 
     setState(() {
@@ -129,7 +129,7 @@ class _CameraInterfaceState extends State<CameraInterface> {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
-                          pickImage();
+                          getImage();
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width - 250,
