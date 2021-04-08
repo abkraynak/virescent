@@ -1,0 +1,2 @@
+is_recycle_bin
+not_recycle_bin
