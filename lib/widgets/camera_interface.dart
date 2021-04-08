@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
 
+
 class CameraInterface extends StatefulWidget {
   @override
   _CameraInterfaceState createState() => _CameraInterfaceState();
@@ -99,7 +100,7 @@ class _CameraInterfaceState extends State<CameraInterface> {
                           width: 350,
                           child: Column(
                             children: <Widget>[
-                              //Image.asset('assets/recycle_sign.png'),
+                              Image.asset('assets/recycle_sign.png'),
                               SizedBox(height: 50),
                             ],
                           ),
