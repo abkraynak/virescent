@@ -73,7 +73,7 @@ class _CameraInterfaceState extends State<CameraInterface> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightGreenAccent,
+        //backgroundColor: Colors.lightGreenAccent,
         body: Container(
             padding: EdgeInsets.symmetric(horizontal: 24),
             child: Column(
@@ -98,7 +98,7 @@ class _CameraInterfaceState extends State<CameraInterface> {
                           width: 350,
                           child: Column(
                             children: <Widget>[
-                              Image.asset('assets/recycle_sign.png'),
+                              //Image.asset('assets/recycle_sign.png'),
                               SizedBox(height: 50),
                             ],
                           ),
