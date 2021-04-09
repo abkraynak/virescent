@@ -75,11 +75,11 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                 child: isLoading
                     ? CircularProgressIndicator()
                     : ElevatedButton(
-                        child: Text('Log In',
-                            style: TextStyle(
-                                color: ThemeColors.raisedButtonText,
-                                fontSize: 18)),
-                        style: ElevatedButtons.mainStyle,
+                        child: Text(
+                          'Log In',
+                          style: ElevatedButtons.mainTextStyle,
+                        ),
+                        style: ElevatedButtons.mainButtonStyle,
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
                             setState(() {
