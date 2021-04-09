@@ -25,83 +25,92 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
         appBar: AppBar(title: Text(PageTitles.emailLogin)),
         body: Form(
             key: _formKey,
-            child: SingleChildScrollView(
-                child: Column(children: <Widget>[
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
-                child: TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                  ),
-                  // The validator receives the text that the user has entered.
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Enter your email address';
-                    } else if (!value.contains('@')) {
-                      return 'Enter a valid email address';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
-                child: TextFormField(
-                  obscureText: true,
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                  ),
-                  // The validator receives the text that the user has entered.
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Enter your password';
-                    } else if (value.length < 6) {
-                      return 'Password must be at least 6 characters';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-                child: TextButton(
-                  child: Text('Forgot Password?', style: TextButtons.mainTextStyle,),
-                  style: TextButtons.mainButtonStyle,
-                  onPressed: () {},
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
-                child: isLoading
-                    ? CircularProgressIndicator()
-                    : ElevatedButton(
-                        child: Text(
-                          'Log In',
-                          style: ElevatedButtons.mainTextStyle,
+            child: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: Paddings.ver, horizontal: Paddings.hor),
+                    child: TextFormField(
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50.0),
                         ),
-                        style: ElevatedButtons.mainButtonStyle,
-                        onPressed: () {
-                          if (_formKey.currentState.validate()) {
-                            setState(() {
-                              isLoading = true;
-                            });
-                            logInToFb();
-                            setState(() {
-                              isLoading = false;
-                            });
-                          }
-                        },
                       ),
-              )
-            ]))));
+                      // The validator receives the text that the user has entered.
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Enter your email address';
+                        } else if (!value.contains('@')) {
+                          return 'Enter a valid email address';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: Paddings.ver, horizontal: Paddings.hor),
+                    child: TextFormField(
+                      obscureText: true,
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                      ),
+                      // The validator receives the text that the user has entered.
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Enter your password';
+                        } else if (value.length < 6) {
+                          return 'Password must be at least 6 characters';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                    child: TextButton(
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextButtons.mainTextStyle,
+                      ),
+                      style: TextButtons.mainButtonStyle,
+                      onPressed: () {},
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: Paddings.ver, horizontal: Paddings.hor),
+                    child: isLoading
+                        ? CircularProgressIndicator()
+                        : ElevatedButton(
+                            child: Text(
+                              'Log In',
+                              style: ElevatedButtons.mainTextStyle,
+                            ),
+                            style: ElevatedButtons.mainButtonStyle,
+                            onPressed: () {
+                              if (_formKey.currentState.validate()) {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                                logInToFb();
+                                setState(() {
+                                  isLoading = false;
+                                });
+                              }
+                            },
+                          ),
+                  )
+                ]))));
   }
 
   void logInToFb() {
