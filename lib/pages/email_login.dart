@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../constants/buttons.dart';
 import '../constants/page_titles.dart';
 import '../constants/positioning.dart';
+import '../constants/text_fields.dart';
 import 'home.dart';
 
 class EmailLogInPage extends StatefulWidget {
@@ -37,9 +38,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                       controller: emailController,
                       decoration: InputDecoration(
                         labelText: 'Email',
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
+                        border: TextFields.mainTextFieldBorderStyle,
                       ),
                       // The validator receives the text that the user has entered.
                       validator: (value) {
@@ -60,9 +59,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                       controller: passwordController,
                       decoration: InputDecoration(
                         labelText: 'Password',
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
+                        border: TextFields.mainTextFieldBorderStyle,
                       ),
                       // The validator receives the text that the user has entered.
                       validator: (value) {
