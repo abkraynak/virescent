@@ -32,7 +32,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                 child: TextFormField(
                   controller: emailController,
                   decoration: InputDecoration(
-                    labelText: "  Email Address",
+                    labelText: 'Email',
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50.0),
                     ),
@@ -40,9 +40,9 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                   // The validator receives the text that the user has entered.
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Enter Email Address';
+                      return 'Enter your email address';
                     } else if (!value.contains('@')) {
-                      return 'Please enter a valid email address!';
+                      return 'Enter a valid email address';
                     }
                     return null;
                   },
@@ -54,7 +54,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                   obscureText: true,
                   controller: passwordController,
                   decoration: InputDecoration(
-                    labelText: "  Password",
+                    labelText: 'Password',
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50.0),
                     ),
@@ -62,9 +62,9 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                   // The validator receives the text that the user has entered.
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Enter Password';
+                      return 'Enter your password';
                     } else if (value.length < 6) {
-                      return 'Password must be atleast 6 characters!';
+                      return 'Password must be at least 6 characters';
                     }
                     return null;
                   },
