@@ -28,7 +28,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
             child: SingleChildScrollView(
                 child: Column(children: <Widget>[
               Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
                 child: TextFormField(
                   controller: emailController,
                   decoration: InputDecoration(
@@ -49,7 +49,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
                 child: TextFormField(
                   obscureText: true,
                   controller: passwordController,
@@ -71,7 +71,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
+                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                 child: TextButton(
                   child: Text('Forgot Password?', style: TextButtons.mainTextStyle,),
                   style: TextButtons.mainButtonStyle,
@@ -79,7 +79,7 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
                 child: isLoading
                     ? CircularProgressIndicator()
                     : ElevatedButton(
