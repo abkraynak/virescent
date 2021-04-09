@@ -5,12 +5,12 @@ import 'positioning.dart';
 
 class ElevatedButtons {
   static ButtonStyle mainButtonStyle = ElevatedButton.styleFrom(
-    primary: ThemeColors.raisedButton,
+    primary: ThemeColors.elevatedButton,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
     elevation: Elevations.level1,
   );
   static TextStyle mainTextStyle = TextStyle(
-    color: ThemeColors.raisedButtonText,
+    color: ThemeColors.elevatedButtonText,
     fontSize: 22,
   );
 }
