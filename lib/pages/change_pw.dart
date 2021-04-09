@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../constants/buttons.dart';
 import '../constants/colors.dart';
 import '../constants/page_titles.dart';
 
@@ -86,30 +87,33 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               ),
               Padding(
                 padding: EdgeInsets.all(20.0),
-                child: isLoading ? CircularProgressIndicator() : RaisedButton(
-                  color: ThemeColors.raisedButton,
-                  onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      setState(() {
-                        isLoading = true;
-                      });
-                      changePassword();
-                      setState(() {
-                        isLoading = false;
-                      });
-                    }
-                  },
-                  child: Text('Change Password',
-                      style: TextStyle(color: ThemeColors.raisedButtonText, fontSize: 18)),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)),
-                ),
+                child: isLoading
+                    ? CircularProgressIndicator()
+                    : ElevatedButton(
+                        child: Text(
+                          'Change Password',
+                          style: ElevatedButtons.mainTextStyle,
+                        ),
+                        style: ElevatedButtons.mainButtonStyle,
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            setState(() {
+                              isLoading = true;
+                            });
+                            changePassword();
+                            setState(() {
+                              isLoading = false;
+                            });
+                          }
+                        },
+                      ),
               )
             ]))));
   }
-  void changePassword() async{
+
+  void changePassword() async {
     //Create an instance of the current user.
-    user.updatePassword(newPassword2Controller.text).then((_){
+    user.updatePassword(newPassword2Controller.text).then((_) {
       showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -126,7 +130,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               ],
             );
           });
-    }).catchError((err){
+    }).catchError((err) {
       print(err.message);
       showDialog(
           context: context,
@@ -147,4 +151,3 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     });
   }
 }
-
