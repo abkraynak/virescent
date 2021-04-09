@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../constants/positioning.dart';
+
 
 class CameraInterface extends StatefulWidget {
   @override
@@ -74,25 +76,15 @@ class _CameraInterfaceState extends State<CameraInterface> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+        body: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(
+                vertical: Paddings.ver, horizontal: Paddings.hor),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                SizedBox(height: 50),
-                Text(
-                  'Virescent',
-                  style: TextStyle(color: Colors.black, fontSize: 20),
-                ),
-                SizedBox(height: 5),
-                Text('Recycle Bin Classifier',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 30,
-                    )),
-                SizedBox(height: 50),
-                Center(
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: Paddings.ver, horizontal: Paddings.hor),
                   child: _loading
                       ? Container(
                           width: 350,
