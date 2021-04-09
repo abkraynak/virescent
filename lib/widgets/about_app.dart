@@ -9,7 +9,12 @@ class AboutApp extends StatelessWidget {
           Card(
               child: ListTile(
                   title: const Text('About'),
-                  subtitle: const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel libero ligula. Sed semper, ipsum quis lobortis tempus, sapien tellus gravida purus, sit amet varius ligula lorem umsan orci'),
+                  subtitle: const Text('Version 1.0.0'),
+                  onTap: () {})),
+          Card(
+              child: ListTile(
+                  title: const Text('Contact Us'),
+                  subtitle: const Text('Have a comment, complaint, or suggestion? \nEmail us at virescent.app@gmail.com'),
                   onTap: () {})),
           Card(
               child: ListTile(
@@ -21,6 +26,7 @@ class AboutApp extends StatelessWidget {
                   title: const Text('Privacy Policy'),
                   subtitle: const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel libero ligula. Sed semper, ipsum quis lobortis tempus, sapien tellus gravida purus, sit amet varius ligula lorem non mi. In commodo, erat et sollicitudin dignissim, est eros molestie ex, ut ullamcorper magna risus vel dolor. Sed sed elit venenatis, sollicitudin mauris at, accumsan orci'),
                   onTap: () {})),
+
         ],
       ),
     );
