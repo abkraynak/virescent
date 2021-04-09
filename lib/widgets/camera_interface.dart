@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../constants/buttons.dart';
 import '../constants/positioning.dart';
 
 
@@ -76,15 +76,16 @@ class _CameraInterfaceState extends State<CameraInterface> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(
-                vertical: Paddings.ver, horizontal: Paddings.hor),
+        body: Center(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.symmetric(
                       vertical: Paddings.ver, horizontal: Paddings.hor),
+                ),
+                Center(
                   child: _loading
                       ? Container(
                           width: 350,
@@ -115,57 +116,33 @@ class _CameraInterfaceState extends State<CameraInterface> {
                           ),
                         ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
+                Center(
                   child: Column(
                     children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          getImage();
-                        },
-                        child: Container(
-                          width: MediaQuery.of(context).size.width - 250,
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 18),
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: Text(
-                            'Capture a Image',
-                            style: TextStyle(
-                                color: Colors.orange,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
-                          ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: Paddings.ver, horizontal: Paddings.hor),
+                        child: ElevatedButton(
+                          child: Text('Capture Image', style: ElevatedButtons.mainTextStyle),
+                          style: ElevatedButtons.mainButtonStyle,
+                          onPressed: () { getImage(); },
                         ),
                       ),
-                      SizedBox(height: 5),
-                      GestureDetector(
-                        onTap: () {
-                          pickGalleryImage();
-                        },
-                        child: Container(
-                          width: MediaQuery.of(context).size.width - 250,
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 18),
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: Text(
-                            'Select a Image',
-                            style: TextStyle(
-                                color: Colors.orange,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
-                          ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: Paddings.ver, horizontal: Paddings.hor),
+                        child: ElevatedButton(
+                          child: Text('Select Image', style: ElevatedButtons.mainTextStyle),
+                          style: ElevatedButtons.mainButtonStyle,
+                          onPressed: () { pickGalleryImage(); },
                         ),
                       ),
                     ],
                   ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: Paddings.ver, horizontal: Paddings.hor),
                 ),
               ],
             )));
