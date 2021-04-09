@@ -126,11 +126,11 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text("Error"),
+              title: Text('Error'),
               content: Text(err.message),
               actions: [
-                FlatButton(
-                  child: Text("Close"),
+                TextButton(
+                  child: Text('CLOSE'),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
