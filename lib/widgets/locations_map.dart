@@ -19,6 +19,7 @@ class _LocationsMapState extends State<LocationsMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: GoogleMap(
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(

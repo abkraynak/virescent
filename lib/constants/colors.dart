@@ -7,4 +7,5 @@ class ThemeColors {
   static Color fabIcon = Colors.white;
   static Color raisedButton = Colors.lightGreen;
   static Color raisedButtonText = Colors.white;
+  static Color textButtonText = Colors.blue;
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:tflite/tflite.dart';
@@ -75,7 +74,6 @@ class _CameraInterfaceState extends State<CameraInterface> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //backgroundColor: Colors.lightGreenAccent,
         body: Container(
             padding: EdgeInsets.symmetric(horizontal: 24),
             child: Column(

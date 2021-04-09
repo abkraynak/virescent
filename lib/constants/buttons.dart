@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
-import 'elevations.dart';
+import 'positioning.dart';
 
 class ElevatedButtons {
   static ButtonStyle mainButtonStyle = ElevatedButton.styleFrom(
@@ -11,9 +11,14 @@ class ElevatedButtons {
   );
   static TextStyle mainTextStyle = TextStyle(
     color: ThemeColors.raisedButtonText,
-    fontSize: 18,
+    fontSize: 22,
   );
 }
 
-
-class FlatButtons {}
+class TextButtons {
+  static ButtonStyle mainButtonStyle = TextButton.styleFrom();
+  static TextStyle mainTextStyle = TextStyle(
+    color: ThemeColors.textButtonText,
+    fontSize: 18,
+  );
+}

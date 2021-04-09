@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/buttons.dart';
-import '../constants/colors.dart';
 import '../constants/page_titles.dart';
+import '../constants/positioning.dart';
 import 'home.dart';
 
 class EmailLogInPage extends StatefulWidget {
@@ -68,6 +68,14 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                     }
                     return null;
                   },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
+                child: TextButton(
+                  child: Text('Forgot Password?', style: TextButtons.mainTextStyle,),
+                  style: TextButtons.mainButtonStyle,
+                  onPressed: () {},
                 ),
               ),
               Padding(
