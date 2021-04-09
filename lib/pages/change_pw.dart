@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../constants/buttons.dart';
-import '../constants/colors.dart';
+import '../constants/text_fields.dart';
 import '../constants/page_titles.dart';
 
 class ChangePasswordPage extends StatefulWidget {
@@ -48,15 +48,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   controller: newPassword1Controller,
                   decoration: InputDecoration(
                     labelText: '  New password',
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
+                    border: TextFields.mainTextFieldBorderStyle,
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Enter Password';
+                      return 'Enter your new password';
                     } else if (value.length < 6) {
-                      return 'Password must be atleast 6 characters!';
+                      return 'Password must be at least 6 characters';
                     }
                     return null;
                   },
@@ -69,15 +67,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   controller: newPassword2Controller,
                   decoration: InputDecoration(
                     labelText: '  New password, again',
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
+                    border: TextFields.mainTextFieldBorderStyle,
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Enter Password';
+                      return 'Enter your new password';
                     } else if (value.length < 6) {
-                      return 'Password must be atleast 6 characters!';
+                      return 'Password must be at least 6 characters';
                     } else if (value != newPassword1Controller.text) {
                       return 'Passwords must match';
                     }
@@ -112,7 +108,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   }
 
   void changePassword() async {
-    //Create an instance of the current user.
     user.updatePassword(newPassword2Controller.text).then((_) {
       showDialog(
           context: context,
@@ -121,7 +116,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               title: Text('Success!'),
               content: Text('Your password was successfully updated'),
               actions: [
-                FlatButton(
+                TextButton(
                   child: Text('CLOSE'),
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -139,7 +134,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               title: Text('Error'),
               content: Text(err.message),
               actions: [
-                FlatButton(
+                TextButton(
                   child: Text('CLOSE'),
                   onPressed: () {
                     Navigator.of(context).pop();

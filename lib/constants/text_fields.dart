@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'positioning.dart';
+
 class TextFields {
   static InputBorder mainTextFieldBorderStyle =
-      OutlineInputBorder(borderRadius: BorderRadius.circular(50.0));
+      OutlineInputBorder(borderRadius: Radius.rounding);
 }

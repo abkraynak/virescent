@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/colors.dart';
-import '../constants/page_titles.dart';
 import '../constants/buttons.dart';
+import '../constants/page_titles.dart';
+import '../constants/text_fields.dart';
 import 'home.dart';
 
 class EmailSignUpPage extends StatefulWidget {
@@ -36,12 +36,9 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
                 child: TextFormField(
                   controller: nameController,
                   decoration: InputDecoration(
-                    labelText: "  Name",
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
+                    labelText: 'Name',
+                    border: TextFields.mainTextFieldBorderStyle,
                   ),
-                  // The validator receives the text that the user has entered.
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Enter User Name';
@@ -55,12 +52,9 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
                 child: TextFormField(
                   controller: emailController,
                   decoration: InputDecoration(
-                    labelText: "  Email",
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
+                    labelText: 'Email',
+                    border: TextFields.mainTextFieldBorderStyle,
                   ),
-                  // The validator receives the text that the user has entered.
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Enter an Email Address';
@@ -77,12 +71,9 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
                   obscureText: true,
                   controller: passwordController,
                   decoration: InputDecoration(
-                    labelText: "  Password",
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
+                    labelText: 'Password',
+                    border: TextFields.mainTextFieldBorderStyle,
                   ),
-                  // The validator receives the text that the user has entered.
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Enter Password';
@@ -137,11 +128,11 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text("Error"),
+              title: Text('Error'),
               content: Text(err.message),
               actions: [
-                FlatButton(
-                  child: Text("Close"),
+                TextButton(
+                  child: Text('CLOSE'),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
