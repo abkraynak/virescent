@@ -6,8 +6,18 @@ import '../constants/colors.dart';
 import '../constants/positioning.dart';
 import '../constants/route_names.dart';
 
+Future<String> getBalance() async {
+  String result = (await FirebaseDatabase.instance
+          .reference()
+          .child("users/testuser/balance")
+          .once())
+      .value;
+  print(result);
+  return result;
+}
+
 class AccountInfo extends StatefulWidget {
-  AccountInfo({ this.app });
+  AccountInfo({this.app});
   final FirebaseApp app;
 
   @override
@@ -15,24 +25,38 @@ class AccountInfo extends StatefulWidget {
 }
 
 class _AccountInfoState extends State<AccountInfo> {
-  final referenceDb = FirebaseDatabase.instance;
+  final dbRef = FirebaseDatabase.instance.reference().child("users").child("testuser").child("balance");
+  List<Map<dynamic, dynamic>> lists = [];
 
   @override
   Widget build(BuildContext context) {
-    final ref = referenceDb.reference();
     return Scaffold(
-      body: ListView(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
-              child: Text('My Balace: '),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
-              child: Text('My Posts: '),
-            ),
-          ],
-        ),
+      body: FutureBuilder(
+        future: dbRef.once(),
+        builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+          if (snapshot.hasData) {
+            lists.clear();
+            Map<dynamic, dynamic> values = snapshot.data.value;
+            values.forEach((key, values) {
+              lists.add(values);
+            });
+            return new ListView.builder(
+                shrinkWrap: true,
+                itemCount: lists.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text("My Balance: " + lists[index]["balance"]),
+                      ],
+                    ),
+                  );
+                });
+          }
+          return CircularProgressIndicator();
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await Navigator.pushNamed(context, RouteNames.camera);
