@@ -18,9 +18,16 @@ class _AccountInfoState extends State<AccountInfo> {
 
   @override
   Widget build(BuildContext context) {
+    final ref = referenceDb.reference();
     return Scaffold(
-      body: Center(
-        child: Text('This is the Account page'),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: Text('This is the Account page'),
+            )
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
