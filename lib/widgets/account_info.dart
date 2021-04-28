@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
+import '../constants/positioning.dart';
 import '../constants/route_names.dart';
 
 class AccountInfo extends StatefulWidget {
@@ -20,15 +21,18 @@ class _AccountInfoState extends State<AccountInfo> {
   Widget build(BuildContext context) {
     final ref = referenceDb.reference();
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
+      body: ListView(
           children: [
-            Center(
-              child: Text('This is the Account page'),
-            )
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
+              child: Text('My Balace: '),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: Paddings.ver, horizontal: Paddings.hor),
+              child: Text('My Posts: '),
+            ),
           ],
         ),
-      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await Navigator.pushNamed(context, RouteNames.camera);
