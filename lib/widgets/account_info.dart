@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
@@ -15,41 +14,26 @@ Future<String> getBalance() async {
           .child('users/$uid/balance')
           .once())
       .value;
-  print(result);
   return result;
 }
 
 class AccountInfo extends StatefulWidget {
-  /*
-  AccountInfo({this.app, this.uid, this.balance});
-  final FirebaseApp app;
-  final String uid;
-  final String balance;
-
-
-   */
   @override
   _AccountInfoState createState() => _AccountInfoState();
 }
 
 class _AccountInfoState extends State<AccountInfo> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  User user;
-  String uid;
   int balance;
   String bal;
 
-
   @override
   void initState() {
-
     super.initState();
-    initUser();
+    getBal();
   }
 
-  initUser() async {
+  getBal() async {
     bal = await getBalance();
-    //print(bal);
     setState(() {});
   }
 
