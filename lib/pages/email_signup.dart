@@ -17,7 +17,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
   final _formKey = GlobalKey<FormState>();
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   DatabaseReference dbRef =
-      FirebaseDatabase.instance.reference().child("Users");
+      FirebaseDatabase.instance.reference().child("users");
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -108,13 +108,13 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
   }
 
   void registerToFb() {
-    firebaseAuth
-        .createUserWithEmailAndPassword(
+    firebaseAuth.createUserWithEmailAndPassword(
             email: emailController.text, password: passwordController.text)
         .then((result) {
       dbRef.child(result.user.uid).set({
         "email": emailController.text,
-        "name": nameController.text
+        "name": nameController.text,
+        "balance": "0"
       }).then((res) {
         isLoading = false;
         Navigator.pushReplacement(
@@ -141,6 +141,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
             );
           });
     });
+
   }
 
   @override

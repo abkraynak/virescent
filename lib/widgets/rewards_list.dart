@@ -1,22 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 import '../constants/colors.dart';
 import '../constants/route_names.dart';
+import '../models/rewards.dart';
 import '../widgets/rewards_card.dart';
 
-class RewardsList extends StatelessWidget {
+class DBServ {
+  static Future<List<RewardDB>> getRewards() async {
+    Query rewardSnapshot = await FirebaseDatabase.instance
+        .reference()
+        .child("rewards")
+        .orderByKey();
+
+    print(rewardSnapshot); // to debug and see if data is returned
+    print('here/n');
+
+    List<RewardDB> rewards = [];
+/*
+    Map<dynamic, dynamic> values = needsSnapshot.path.value;
+    values.forEach((key, values) {
+      rewards.add(RewardDB.fromSnapshot(values));
+    });
+
+ */
+
+    return rewards;
+  }
+}
+
+class RewardsList extends StatefulWidget {
+  @override
+  _RewardsListState createState() => _RewardsListState();
+}
+
+class _RewardsListState extends State<RewardsList> {
+  List<RewardDB> _rewards = [];
+
+  @override
+  void initState(){
+    super.initState();
+    _setupRewards();
+  }
+
+  _setupRewards() async {
+    List<RewardDB> rewards = await DBServ.getRewards();
+    setState(() {
+      _rewards = rewards;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(children: <Widget>[
-        RewardsCard(),
-        RewardsCard(),
-        RewardsCard(),
-        RewardsCard(),
-        RewardsCard(),
-        RewardsCard(),
-        RewardsCard(),
-      ]),
+      body: ListView.builder(
+          itemCount: _rewards.length,
+          itemBuilder: (BuildContext context, int index) {
+            RewardDB reward = _rewards[index];
+            return ListTile(
+
+            );
+          }
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await Navigator.pushNamed(context, RouteNames.camera);

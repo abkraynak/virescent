@@ -6,10 +6,13 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../constants/route_names.dart';
 
-Future<String> getBalance(String uid) async {
+
+Future<String> getBalance() async {
+  User user = FirebaseAuth.instance.currentUser;
+  String uid = user.uid;
   String result = (await FirebaseDatabase.instance
           .reference()
-          .child("users/$uid/balance")
+          .child('users/$uid/balance')
           .once())
       .value;
   print(result);
@@ -17,10 +20,14 @@ Future<String> getBalance(String uid) async {
 }
 
 class AccountInfo extends StatefulWidget {
-  AccountInfo({this.app, this.uid});
+  /*
+  AccountInfo({this.app, this.uid, this.balance});
   final FirebaseApp app;
   final String uid;
+  final String balance;
 
+
+   */
   @override
   _AccountInfoState createState() => _AccountInfoState();
 }
@@ -28,11 +35,9 @@ class AccountInfo extends StatefulWidget {
 class _AccountInfoState extends State<AccountInfo> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User user;
-  final dbRef = FirebaseDatabase.instance
-      .reference()
-      .child("users").child("testuser").child("balance");
-
+  String uid;
   int balance;
+  String bal;
 
 
   @override
@@ -42,8 +47,9 @@ class _AccountInfoState extends State<AccountInfo> {
     initUser();
   }
 
-  initUser() {
-    user = _auth.currentUser;
+  initUser() async {
+    bal = await getBalance();
+    //print(bal);
     setState(() {});
   }
 
@@ -51,7 +57,9 @@ class _AccountInfoState extends State<AccountInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: dbRef.once(),
+        future: FirebaseDatabase.instance
+            .reference()
+            .child('users').child('testuser').child('balance').once(),
         builder: (BuildContext context, AsyncSnapshot<DataSnapshot> snapshot) {
           if (snapshot.hasData) {
             balance = snapshot.data.value;
@@ -64,7 +72,7 @@ class _AccountInfoState extends State<AccountInfo> {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         ListTile(
-                          title: Text(balance.toString(), style: TextStyle(fontSize: 26),),
+                          title: Text(bal, style: TextStyle(fontSize: 26),),
                           subtitle: Text("My Balance"),
                         ),
                         Row(

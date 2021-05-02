@@ -11,7 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore:
   firebase_core: ^0.5.0+1
   firebase_database: ^4.1.1
   firebase_auth: ^0.18.1+2
