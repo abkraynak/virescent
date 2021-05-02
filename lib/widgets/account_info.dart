@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -5,10 +6,10 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../constants/route_names.dart';
 
-Future<String> getBalance() async {
+Future<String> getBalance(String uid) async {
   String result = (await FirebaseDatabase.instance
           .reference()
-          .child("users/testuser/balance")
+          .child("users/$uid/balance")
           .once())
       .value;
   print(result);
@@ -16,20 +17,35 @@ Future<String> getBalance() async {
 }
 
 class AccountInfo extends StatefulWidget {
-  AccountInfo({this.app});
+  AccountInfo({this.app, this.uid});
   final FirebaseApp app;
+  final String uid;
 
   @override
   _AccountInfoState createState() => _AccountInfoState();
 }
 
 class _AccountInfoState extends State<AccountInfo> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User user;
   final dbRef = FirebaseDatabase.instance
       .reference()
-      .child("users")
-      .child("testuser")
-      .child("balance");
+      .child("users").child("testuser").child("balance");
+
   int balance;
+
+
+  @override
+  void initState() {
+
+    super.initState();
+    initUser();
+  }
+
+  initUser() {
+    user = _auth.currentUser;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
