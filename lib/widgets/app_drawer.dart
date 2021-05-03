@@ -104,6 +104,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   },
                   selected: _selectedRoute == RouteNames.rewards,
                 ),
+                /*
                 ListTile(
                   leading: const Icon(Icons.account_circle),
                   title: const Text(PageTitles.account),
@@ -112,6 +113,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   },
                   selected: _selectedRoute == RouteNames.account,
                 ),
+                 */
                 const Divider(),
                 ListTile(
                   leading: const Icon(Icons.settings),
