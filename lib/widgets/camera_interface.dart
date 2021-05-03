@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../constants/buttons.dart';
 import '../constants/positioning.dart';
 
+Future<String> getBalance() async {
+  User user = FirebaseAuth.instance.currentUser;
+  String uid = user.uid;
+  String result = (await FirebaseDatabase.instance
+          .reference()
+          .child('users/$uid/balance')
+          .once())
+      .value;
+  return result;
+}
 
 class CameraInterface extends StatefulWidget {
   @override
@@ -14,6 +26,7 @@ class CameraInterface extends StatefulWidget {
 }
 
 class _CameraInterfaceState extends State<CameraInterface> {
+  String bal;
   bool _loading = true;
   File _image;
   List _output;
@@ -22,12 +35,27 @@ class _CameraInterfaceState extends State<CameraInterface> {
   @override
   void initState() {
     super.initState();
+    getBal();
     loadModel().then((value) {
       setState(() {});
     });
   }
 
+  getBal() async {
+    bal = await getBalance();
+    setState(() {});
+  }
+
+  setBal() async {
+    User user = FirebaseAuth.instance.currentUser;
+    String uid = user.uid;
+    await FirebaseDatabase.instance.reference().child('users/$uid').set({
+      "balance": bal,
+    });
+  }
+
   detectImage(File image) async {
+    getBal();
     var output = await Tflite.runModelOnImage(
         path: image.path,
         numResults: 2,
@@ -36,6 +64,12 @@ class _CameraInterfaceState extends State<CameraInterface> {
         imageStd: 127.5);
     setState(() {
       _output = output;
+      if(_output[0]['label'] == 'is_recycle_bin') {
+        var balint = int.parse(bal);
+        balint += 10;
+        bal = balint.toString();
+        setBal();
+      }
       _loading = false;
     });
   }
@@ -78,73 +112,79 @@ class _CameraInterfaceState extends State<CameraInterface> {
     return Scaffold(
         body: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: Paddings.ver, horizontal: Paddings.hor),
-                ),
-                Center(
-                  child: _loading
-                      ? Container(
-                          width: 350,
-                          child: Column(
-                            children: <Widget>[
-                              Image.asset('assets/recycle_sign.png'),
-                              SizedBox(height: 50),
-                            ],
-                          ),
-                        )
-                      : Container(
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                height: 250,
-                                child: Image.file(_image),
-                              ),
-                              SizedBox(height: 20),
-                              _output != null
-                                  ? Text(
-                                      '${_output[0]['label']}',
-                                      style: TextStyle(
-                                          color: Colors.orange, fontSize: 15),
-                                    )
-                                  : Container(),
-                              SizedBox(height: 10),
-                            ],
-                          ),
-                        ),
-                ),
-                Center(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.symmetric(
+              vertical: Paddings.ver, horizontal: Paddings.hor),
+        ),
+        Center(
+          child: _loading
+              ? Container(
+                  width: 350,
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: Paddings.ver, horizontal: Paddings.hor),
-                        child: ElevatedButton(
-                          child: Text('Capture Image', style: ElevatedButtons.mainTextStyle),
-                          style: ElevatedButtons.mainButtonStyle,
-                          onPressed: () { getImage(); },
-                        ),
+                      Image.asset('assets/recycle_sign.png'),
+                      SizedBox(height: 50),
+                    ],
+                  ),
+                )
+              : Container(
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        height: 250,
+                        child: Image.file(_image),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: Paddings.ver, horizontal: Paddings.hor),
-                        child: ElevatedButton(
-                          child: Text('Select Image', style: ElevatedButtons.mainTextStyle),
-                          style: ElevatedButtons.mainButtonStyle,
-                          onPressed: () { pickGalleryImage(); },
-                        ),
-                      ),
+                      SizedBox(height: 20),
+                      _output != null
+                          ? Text(
+                              '${_output[0]['label']}',
+                              style:
+                                  TextStyle(color: Colors.orange, fontSize: 15),
+                            )
+                          : Container(),
+                      SizedBox(height: 10),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: Paddings.ver, horizontal: Paddings.hor),
+        ),
+        Center(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: Paddings.ver, horizontal: Paddings.hor),
+                child: ElevatedButton(
+                  child: Text('Capture Image',
+                      style: ElevatedButtons.mainTextStyle),
+                  style: ElevatedButtons.mainButtonStyle,
+                  onPressed: () {
+                    getImage();
+                  },
                 ),
-              ],
-            )));
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: Paddings.ver, horizontal: Paddings.hor),
+                child: ElevatedButton(
+                  child: Text('Select Image',
+                      style: ElevatedButtons.mainTextStyle),
+                  style: ElevatedButtons.mainButtonStyle,
+                  onPressed: () {
+                    pickGalleryImage();
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+              vertical: Paddings.ver, horizontal: Paddings.hor),
+        ),
+      ],
+    )));
   }
 }
