@@ -6,6 +6,22 @@ import '../constants/route_names.dart';
 import '../models/rewards.dart';
 import '../widgets/rewards_card.dart';
 
+class RewardListItem {
+  String company;
+  String cost;
+  String description;
+  String redeemed;
+  String title;
+  RewardListItem({ this.company, this.cost, this.description, this.redeemed, this.title });
+}
+
+class RewardList{
+  List<RewardListItem> rewardList;
+  RewardList({ this.rewardList });
+}
+
+final dbRef = FirebaseDatabase.instance.reference();
+
 class DBServ {
   static Future<List<RewardDB>> getRewards() async {
     Query rewardSnapshot = await FirebaseDatabase.instance

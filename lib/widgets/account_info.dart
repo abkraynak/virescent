@@ -64,7 +64,26 @@ class _AccountInfoState extends State<AccountInfo> {
                           children: <Widget>[
                             TextButton(
                               child: const Text('INFO'),
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Your balance'),
+                                        content: Text('You can earn points by submitting photos of your recycling. '
+                                            'If you have just submitted a photo, please refresh the page to view your updated balance. '
+                                            'Points can be used to redeem rewards on the Rewards page. '),
+                                        actions: [
+                                          TextButton(
+                                            child: Text('CLOSE'),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          )
+                                        ],
+                                      );
+                                    });
+                              },
                             ),
                             const SizedBox(width: 8),
                           ],
