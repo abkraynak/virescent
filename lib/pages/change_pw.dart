@@ -120,6 +120,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   child: Text('CLOSE'),
                   onPressed: () {
                     Navigator.of(context).pop();
+                    Navigator.of(context).pop();
                   },
                 )
               ],

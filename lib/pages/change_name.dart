@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 import '../constants/buttons.dart';
 import '../constants/text_fields.dart';
@@ -40,68 +41,70 @@ class _ChangeNamePageState extends State<ChangeNamePage> {
             key: _formKey,
             child: SingleChildScrollView(
                 child: Column(children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: TextFormField(
-                      obscureText: true,
-                      controller: newNameController,
-                      decoration: InputDecoration(
-                        labelText: '  New name',
-                        border: TextFields.mainTextFieldBorderStyle,
-                      ),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Enter your new name';
-                        }
-                        return null;
-                      },
-                    ),
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: TextFormField(
+                  controller: newNameController,
+                  decoration: InputDecoration(
+                    labelText: '  New name',
+                    border: TextFields.mainTextFieldBorderStyle,
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: isLoading
-                        ? CircularProgressIndicator()
-                        : ElevatedButton(
-                      child: Text(
-                        'Change Name',
-                        style: ElevatedButtons.mainTextStyle,
-                      ),
-                      style: ElevatedButtons.mainButtonStyle,
-                      onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          setState(() {
-                            isLoading = true;
-                          });
-                          //changePassword();
-                          setState(() {
-                            isLoading = false;
-                          });
-                        }
-                      },
-                    ),
-                  )
-                ]))));
-  }
-/*
-  void changePassword() async {
-    user.updatePassword(newPassword2Controller.text).then((_) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Success!'),
-              content: Text('Your password was successfully updated'),
-              actions: [
-                TextButton(
-                  child: Text('CLOSE'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Enter your new name';
+                    }
+                    return null;
                   },
-                )
-              ],
-            );
-          });
-    }).catchError((err) {
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: isLoading
+                    ? CircularProgressIndicator()
+                    : ElevatedButton(
+                        child: Text(
+                          'Change Name',
+                          style: ElevatedButtons.mainTextStyle,
+                        ),
+                        style: ElevatedButtons.mainButtonStyle,
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            setState(() {
+                              isLoading = true;
+                            });
+                            setName();
+                            setState(() {
+                              isLoading = false;
+                            });
+                          }
+                        },
+                      ),
+              )
+            ]))));
+  }
+
+  setName() async {
+    User user = FirebaseAuth.instance.currentUser;
+    String uid = user.uid;
+    await FirebaseDatabase.instance.reference().child('users/$uid').update({
+      "name": newNameController.text,
+    }).then((_) => showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Success!'),
+            content: Text('Your name was successfully updated'),
+            actions: [
+              TextButton(
+                child: Text('CLOSE'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        })).catchError((err) {
       print(err.message);
       showDialog(
           context: context,
@@ -121,6 +124,4 @@ class _ChangeNamePageState extends State<ChangeNamePage> {
           });
     });
   }
-
- */
 }
