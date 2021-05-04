@@ -49,7 +49,7 @@ class _CameraInterfaceState extends State<CameraInterface> {
   setBal() async {
     User user = FirebaseAuth.instance.currentUser;
     String uid = user.uid;
-    await FirebaseDatabase.instance.reference().child('users/$uid').set({
+    await FirebaseDatabase.instance.reference().child('users/$uid').update({
       "balance": bal,
     });
   }
