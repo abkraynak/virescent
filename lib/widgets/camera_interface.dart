@@ -20,6 +20,8 @@ Future<String> getBalance() async {
   return result;
 }
 
+
+
 class CameraInterface extends StatefulWidget {
   @override
   _CameraInterfaceState createState() => _CameraInterfaceState();
@@ -69,6 +71,8 @@ class _CameraInterfaceState extends State<CameraInterface> {
         balint += 10;
         bal = balint.toString();
         setBal();
+        SnackBar(
+            content: Text('Yay! A SnackBar!'));
       }
       _loading = false;
     });
@@ -138,13 +142,9 @@ class _CameraInterfaceState extends State<CameraInterface> {
                         child: Image.file(_image),
                       ),
                       SizedBox(height: 20),
-                      _output != null
-                          ? Text(
-                              '${_output[0]['label']}',
-                              style:
-                                  TextStyle(color: Colors.orange, fontSize: 15),
-                            )
-                          : Container(),
+                      _output[0]['label'] == 'is_recycle_bin'
+                          ? Text('Success! 10 points added to your balance')
+                          : Text('Image is not valid!'),
                       SizedBox(height: 10),
                     ],
                   ),

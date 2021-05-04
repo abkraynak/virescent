@@ -73,8 +73,26 @@ class _RewardsListState extends State<RewardsList> {
           itemCount: _rewards.length,
           itemBuilder: (BuildContext context, int index) {
             RewardDB reward = _rewards[index];
-            return ListTile(
-
+            return Card(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    title: Text('Reward'),
+                    subtitle: Text('This is the description of the reward'),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      TextButton(
+                        child: const Text('REDEEM'),
+                        onPressed: () {},
+                      ),
+                      const SizedBox(width: 8),
+                    ],
+                  ),
+                ],
+              ),
             );
           }
       ),
