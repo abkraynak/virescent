@@ -1,35 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 import '../constants/buttons.dart';
 import '../constants/text_fields.dart';
 import '../constants/page_titles.dart';
-
-class ConfirmEmail extends StatelessWidget {
-  static String id = 'confirm-email';
-  final String message;
-
-  const ConfirmEmail({Key key, this.message}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
-      body: Container(
-        child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Text(
-                message
-                ,
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-            )),
-      ),
-    );
-  }
-}
 
 class ForgotPasswordPage extends StatefulWidget {
   @override
@@ -39,7 +13,6 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  User user;
   String _email;
 
   TextEditingController emailController = TextEditingController();
@@ -49,7 +22,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   _passwordReset() async {
     try {
       _formKey.currentState.save();
-      final user = await _auth.sendPasswordResetEmail(email: _email);
+      await _auth.sendPasswordResetEmail(email: _email);
       showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -60,7 +33,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 TextButton(
                   child: Text('CLOSE'),
                   onPressed: () {
-                    Navigator.of(context).pop();
                     Navigator.of(context).pop();
                   },
                 )
@@ -91,19 +63,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   void initState() {
     super.initState();
-    initUser();
-  }
-
-  initUser() {
-    user = _auth.currentUser;
-    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(PageTitles.changename),
+          title: Text(PageTitles.forgotpw),
         ),
         body: Form(
             key: _formKey,
