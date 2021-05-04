@@ -18,6 +18,17 @@ Future<String> getBalance() async {
   return result;
 }
 
+Future<String> getName() async {
+  User user = FirebaseAuth.instance.currentUser;
+  String uid = user.uid;
+  String result = (await FirebaseDatabase.instance
+      .reference()
+      .child('users/$uid/name')
+      .once())
+      .value;
+  return result;
+}
+
 class AccountInfo extends StatefulWidget {
   @override
   _AccountInfoState createState() => _AccountInfoState();
@@ -27,15 +38,25 @@ class _AccountInfoState extends State<AccountInfo> {
   int balance;
   String bal;
 
+  String name;
+
   @override
   void initState() {
     super.initState();
     getBal();
+    getN();
   }
 
   getBal() async {
     bal = await getBalance();
     setState(() {});
+  }
+
+  getN() async {
+    name = await getName();
+    setState(() {
+
+    });
   }
 
   @override
@@ -44,7 +65,7 @@ class _AccountInfoState extends State<AccountInfo> {
       body: ListView(children: [
         Padding(padding: EdgeInsets.symmetric(
             vertical: 40, horizontal: Paddings.hor),
-            child: Center(child: Text('Hello, !', style: TextStyle(fontSize: 26),),)),
+            child: Center(child: Text('Hello, $name!', style: TextStyle(fontSize: 26),),)),
         FutureBuilder(
           future: FirebaseDatabase.instance
               .reference()
