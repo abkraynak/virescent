@@ -10,4 +10,5 @@ class RouteNames {
   static const String settings = '/settings';
   static const String changepw = 'settings/changepw';
   static const String about = '/settings/about';
+  static const String helpcenter = '/settings/helpcenter';
 }

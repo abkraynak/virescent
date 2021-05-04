@@ -1,4 +1,5 @@
 import 'package:Virescent/pages/about.dart';
+import 'package:Virescent/pages/help_center.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/change_pw.dart';
@@ -35,8 +36,18 @@ class SettingsOptions extends StatelessWidget {
          */
         Card(
             child: ListTile(
-                leading: const Icon(Icons.info),
-                title: const Text('About'),
+                leading: const Icon(Icons.help),
+                title: const Text('Help Center'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HelpCenterPage()));
+                })),
+        Card(
+            child: ListTile(
+                leading: const Icon(Icons.emoji_events_rounded),
+                title: const Text('About Virescent'),
                 onTap: () {
                   Navigator.push(
                       context,

@@ -1,20 +1,20 @@
-import 'package:Virescent/pages/about.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'constants/colors.dart';
 import 'constants/route_names.dart';
+import 'pages/about.dart';
 import 'pages/account.dart';
 import 'pages/camera.dart';
 import 'pages/change_pw.dart';
+import 'pages/help_center.dart';
 import 'pages/home.dart';
 import 'pages/locations.dart';
 import 'pages/settings.dart';
 import 'pages/signup.dart';
 import 'pages/rewards.dart';
 import 'widgets/app_route_observer.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
         RouteNames.signup: (context) => SignUpPage(),
         RouteNames.changepw: (context) => ChangePasswordPage(),
         RouteNames.about: (context) => AboutPage(),
+        RouteNames.helpcenter: (context) => HelpCenterPage(),
       },
     );
   }

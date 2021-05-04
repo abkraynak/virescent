@@ -6,6 +6,7 @@ import '../constants/buttons.dart';
 import '../constants/colors.dart';
 import '../constants/positioning.dart';
 import '../constants/route_names.dart';
+import '../pages/help_center.dart';
 
 Future<String> getBalance() async {
   User user = FirebaseAuth.instance.currentUser;
@@ -147,7 +148,10 @@ class _AccountInfoState extends State<AccountInfo> {
                 style: ElevatedButtons.mainTextStyle),
             style: ElevatedButtons.mainButtonStyle,
             onPressed: () {
-
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HelpCenterPage()));
             },
           ),
         ),
