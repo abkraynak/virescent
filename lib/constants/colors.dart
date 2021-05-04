@@ -8,4 +8,5 @@ class ThemeColors {
   static Color elevatedButton = Colors.lightGreen;
   static Color elevatedButtonText = Colors.white;
   static Color textButtonText = Colors.blue;
+  static Color inactive = Colors.grey;
 }

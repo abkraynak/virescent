@@ -11,8 +11,11 @@ class RewardListItem {
   String cost;
   String description;
   String redeemed;
+  String canredeem;
+  String status;
+  String redemptions;
   RewardListItem(
-      {this.id, this.company, this.cost, this.description, this.redeemed});
+      { this.id, this.company, this.cost, this.description, this.redeemed, this.canredeem, this.status, this.redemptions });
 
   RewardListItem.map(dynamic obj) {
     this.id = obj['id'];
@@ -20,6 +23,9 @@ class RewardListItem {
     this.cost = obj['cost'];
     this.description = obj['description'];
     this.redeemed = obj['redeemed'];
+    this.canredeem = obj['canredeem'];
+    this.status = obj['status'];
+    this.redemptions = obj['redemptions'];
   }
 
   RewardListItem.fromSnapshot(DataSnapshot snapshot) {
@@ -28,6 +34,9 @@ class RewardListItem {
     cost = snapshot.value['cost'];
     description = snapshot.value['description'];
     redeemed = snapshot.value['redeemed'];
+    canredeem = snapshot.value['canredeem'];
+    status = snapshot.value['status'];
+    redemptions = snapshot.value['redemptions'];
   }
 }
 
@@ -49,11 +58,19 @@ class _RewardsListState extends State<RewardsList> {
     rewards = new List();
     _onRewardAddedSubscription =
         rewardsReference.onChildAdded.listen(_onRewardAdded);
+    _onRewardChangedSubscription = rewardsReference.onChildChanged.listen(_onRewardUpdated);
   }
 
   void _onRewardAdded(Event event) {
     setState(() {
       rewards.add(new RewardListItem.fromSnapshot(event.snapshot));
+    });
+  }
+
+  void _onRewardUpdated(Event event){
+    var oldRewardValue = rewards.singleWhere((reward) => reward.id == event.snapshot);
+    setState(() {
+      rewards[rewards.indexOf(oldRewardValue)] = new RewardListItem.fromSnapshot(event.snapshot);
     });
   }
 
@@ -64,7 +81,7 @@ class _RewardsListState extends State<RewardsList> {
           itemCount: rewards.length,
           itemBuilder: (context, index) {
             return Column(children: [
-              rewards[index].redeemed == 'false'
+              rewards[index].canredeem == 'true'
                   ? Card(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -99,8 +116,9 @@ class _RewardsListState extends State<RewardsList> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
                               Text('${rewards[index].cost}' ' pts ', style: TextStyle(color: Colors.grey)),
+
                               TextButton(
-                                child: const Text('REDEEM', style: TextStyle(color: Colors.grey)),
+                                child: Text('${rewards[index].status}', style: TextStyle(color: Colors.grey)),
                                 onPressed: () {},
                               ),
                               const SizedBox(width: 8),
