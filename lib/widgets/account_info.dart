@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/buttons.dart';
 import '../constants/colors.dart';
 import '../constants/positioning.dart';
 import '../constants/route_names.dart';
@@ -107,6 +108,27 @@ class _AccountInfoState extends State<AccountInfo> {
             }
             return CircularProgressIndicator();
           },
+        ),
+        Padding(padding: EdgeInsets.symmetric(
+            vertical: 40, horizontal: Paddings.hor),
+            child: Container()),
+        Padding(padding: EdgeInsets.symmetric(
+            vertical: Paddings.ver, horizontal: Paddings.hor),
+            child: Center(child: Text('Need help getting started?', style: TextStyle(fontSize: 20),),)),
+        Padding(padding: EdgeInsets.symmetric(
+            vertical: Paddings.ver, horizontal: Paddings.hor),
+            child: Center(child: Text('Use the Camera to submit a photo', style: TextStyle(fontSize: 16),),)),
+        Padding(
+          padding: EdgeInsets.symmetric(
+              vertical: Paddings.ver, horizontal: Paddings.hor),
+          child: ElevatedButton(
+            child: Text('Help Center',
+                style: ElevatedButtons.mainTextStyle),
+            style: ElevatedButtons.mainButtonStyle,
+            onPressed: () {
+
+            },
+          ),
         ),
       ]),
       floatingActionButton: FloatingActionButton(
