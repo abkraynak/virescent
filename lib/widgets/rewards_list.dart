@@ -96,12 +96,13 @@ class _RewardsListState extends State<RewardsList> {
   List rewards;
   StreamSubscription _onRewardAddedSubscription;
   StreamSubscription _onRewardChangedSubscription;
-  
+
   @override
   void initState() {
     super.initState();
     rewards = new List();
-    _onRewardAddedSubscription = rewardsReference.onChildAdded.listen(_onRewardAdded);
+    _onRewardAddedSubscription =
+        rewardsReference.onChildAdded.listen(_onRewardAdded);
   }
 /*
   _setupRewards() async {
@@ -110,10 +111,10 @@ class _RewardsListState extends State<RewardsList> {
       _rewards = rewards;
     });
   }
-  
+
  */
 
-  void _onRewardAdded(Event event){
+  void _onRewardAdded(Event event) {
     setState(() {
       rewards.add(new RewardListItem.fromSnapshot(event.snapshot));
     });
@@ -126,27 +127,51 @@ class _RewardsListState extends State<RewardsList> {
           itemCount: rewards.length,
           itemBuilder: (context, index) {
             return Column(children: [
-              Card(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    ListTile(
-                      title: Text('${rewards[index].company}'),
-                      subtitle: Text('${rewards[index].description}'),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        TextButton(
-                          child: const Text('REDEEM'),
-                          onPressed: () {},
-                        ),
-                        const SizedBox(width: 8),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              rewards[index].redeemed == 'false'
+                  ? Card(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          ListTile(
+                            title: Text('${rewards[index].company}'),
+                            subtitle: Text('${rewards[index].description}'),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Text('${rewards[index].cost}' ' pts '),
+                              TextButton(
+                                child: const Text('REDEEM'),
+                                onPressed: () {},
+                              ),
+                              const SizedBox(width: 8),
+                            ],
+                          ),
+                        ],
+                      ),
+                    )
+                  : Card(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          ListTile(
+                            title: Text('${rewards[index].company}', style: TextStyle(color: Colors.grey)),
+                            subtitle: Text('${rewards[index].description}', style: TextStyle(color: Colors.grey)),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Text('${rewards[index].cost}' ' pts ', style: TextStyle(color: Colors.grey)),
+                              TextButton(
+                                child: const Text('REDEEM', style: TextStyle(color: Colors.grey)),
+                                onPressed: () {},
+                              ),
+                              const SizedBox(width: 8),
+                            ],
+                          ),
+                        ],
+                      ),
+                    )
             ]);
           }),
       floatingActionButton: FloatingActionButton(
