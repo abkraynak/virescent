@@ -116,13 +116,20 @@ class _RewardsListState extends State<RewardsList> {
   redeem(int index) {
     var balint = int.parse(bal);
     var cost = int.parse(rewards[index].cost);
+    var success = false;
     setState(() {
       if (balint >= cost) {
         balint = balint - cost;
         bal = balint.toString();
         setBal();
+        success = true;
       }
     });
+    if (success == true) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -149,7 +156,44 @@ class _RewardsListState extends State<RewardsList> {
                                   TextButton(
                                     child: const Text('REDEEM'),
                                     onPressed: () {
-                                      redeem(index);
+                                      redeem(index) == true
+                                          ? showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  title: Text('Success'),
+                                                  content: Text(
+                                                      'Your reward redemption will be sent to your email address.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      child: Text('CLOSE'),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      },
+                                                    )
+                                                  ],
+                                                );
+                                              })
+                                          : showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'Insufficent balance'),
+                                                  content: Text(
+                                                      'This reward cannot be redeemed because your balance is not high enough.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      child: Text('CLOSE'),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      },
+                                                    )
+                                                  ],
+                                                );
+                                              });
                                     },
                                   ),
                                   const SizedBox(width: 8),
