@@ -46,7 +46,7 @@ class SignUpPage extends StatelessWidget {
                         );
                       },
                     )),
-
+/*
                 Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: Paddings.ver, horizontal: Paddings.hor),
@@ -63,6 +63,7 @@ class SignUpPage extends StatelessWidget {
                       text: 'Sign up with Facebook',
                       onPressed: () {},
                     )),
+ */
                 Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: Paddings.ver, horizontal: Paddings.hor),
