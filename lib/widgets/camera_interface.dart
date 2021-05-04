@@ -71,8 +71,6 @@ class _CameraInterfaceState extends State<CameraInterface> {
         balint += 10;
         bal = balint.toString();
         setBal();
-        SnackBar(
-            content: Text('Yay! A SnackBar!'));
       }
       _loading = false;
     });

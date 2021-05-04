@@ -7,9 +7,9 @@ Future<String> getBalance() async {
   User user = FirebaseAuth.instance.currentUser;
   String uid = user.uid;
   String result = (await FirebaseDatabase.instance
-      .reference()
-      .child('users/$uid/balance')
-      .once())
+          .reference()
+          .child('users/$uid/balance')
+          .once())
       .value;
   return result;
 }
@@ -105,6 +105,26 @@ class _RewardsListState extends State<RewardsList> {
     setState(() {});
   }
 
+  setBal() async {
+    User user = FirebaseAuth.instance.currentUser;
+    String uid = user.uid;
+    await FirebaseDatabase.instance.reference().child('users/$uid').update({
+      "balance": bal,
+    });
+  }
+
+  redeem(int index) {
+    var balint = int.parse(bal);
+    var cost = int.parse(rewards[index].cost);
+    setState(() {
+      if (balint >= cost) {
+        balint = balint - cost;
+        bal = balint.toString();
+        setBal();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,7 +148,9 @@ class _RewardsListState extends State<RewardsList> {
                                   Text('${rewards[index].cost}' ' pts '),
                                   TextButton(
                                     child: const Text('REDEEM'),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      redeem(index);
+                                    },
                                   ),
                                   const SizedBox(width: 8),
                                 ],

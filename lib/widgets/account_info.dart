@@ -53,6 +53,8 @@ class _AccountInfoState extends State<AccountInfo> {
     setState(() {});
   }
 
+
+
   getN() async {
     name = await getName();
     setState(() {
