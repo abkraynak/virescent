@@ -1,6 +1,18 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+Future<String> getBalance() async {
+  User user = FirebaseAuth.instance.currentUser;
+  String uid = user.uid;
+  String result = (await FirebaseDatabase.instance
+      .reference()
+      .child('users/$uid/balance')
+      .once())
+      .value;
+  return result;
+}
 
 class RewardListItem {
   String id;
@@ -58,12 +70,14 @@ final rewardsReference = FirebaseDatabase.instance.reference().child('rewards');
 
 class _RewardsListState extends State<RewardsList> {
   List rewards;
+  String bal;
   StreamSubscription _onRewardAddedSubscription;
   StreamSubscription _onRewardChangedSubscription;
 
   @override
   void initState() {
     super.initState();
+    getBal();
     rewards = new List();
     _onRewardAddedSubscription =
         rewardsReference.onChildAdded.listen(_onRewardAdded);
@@ -84,6 +98,11 @@ class _RewardsListState extends State<RewardsList> {
       rewards[rewards.indexOf(oldRewardValue)] =
           new RewardListItem.fromSnapshot(event.snapshot);
     });
+  }
+
+  getBal() async {
+    bal = await getBalance();
+    setState(() {});
   }
 
   @override
