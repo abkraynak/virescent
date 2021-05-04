@@ -46,6 +46,7 @@ class SignUpPage extends StatelessWidget {
                         );
                       },
                     )),
+
                 Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: Paddings.ver, horizontal: Paddings.hor),

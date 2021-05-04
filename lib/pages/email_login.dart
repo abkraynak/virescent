@@ -1,4 +1,5 @@
 import 'package:Virescent/constants/page_titles.dart';
+import 'package:Virescent/pages/forgot_pw.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -80,7 +81,12 @@ class _EmailLogInPageState extends State<EmailLogInPage> {
                         style: TextButtons.mainTextStyle,
                       ),
                       style: TextButtons.mainButtonStyle,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => ForgotPasswordPage()),
+                        );
+                      },
                     ),
                   ),
                   Padding(

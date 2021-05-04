@@ -9,6 +9,7 @@ import 'pages/account.dart';
 import 'pages/camera.dart';
 import 'pages/change_name.dart';
 import 'pages/change_pw.dart';
+import 'pages/forgot_pw.dart';
 import 'pages/help_center.dart';
 import 'pages/home.dart';
 import 'pages/locations.dart';
