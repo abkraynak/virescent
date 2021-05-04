@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/page_titles.dart';
-import '../widgets/about_app.dart';
+import '../widgets/help_center_list.dart';
 
 class HelpCenterPage extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
         appBar: AppBar(
           title: Text(PageTitles.helpcenter),
         ),
-        body: AboutApp()
+        body: FAQList(),
     );
   }
 }
