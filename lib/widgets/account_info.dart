@@ -40,7 +40,7 @@ class _AccountInfoState extends State<AccountInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
+      body: ListView(children: [
         Padding(padding: EdgeInsets.symmetric(
             vertical: 40, horizontal: Paddings.hor),
             child: Center(child: Text('Hello, !', style: TextStyle(fontSize: 26),),)),
