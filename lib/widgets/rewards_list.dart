@@ -10,18 +10,29 @@ class RewardListItem {
   String company;
   String cost;
   String description;
+  String display;
   String redeemed;
   String canredeem;
   String status;
   String redemptions;
+
   RewardListItem(
-      { this.id, this.company, this.cost, this.description, this.redeemed, this.canredeem, this.status, this.redemptions });
+      {this.id,
+      this.company,
+      this.cost,
+      this.description,
+      this.display,
+      this.redeemed,
+      this.canredeem,
+      this.status,
+      this.redemptions});
 
   RewardListItem.map(dynamic obj) {
     this.id = obj['id'];
     this.company = obj['company'];
     this.cost = obj['cost'];
     this.description = obj['description'];
+    this.display = obj['display'];
     this.redeemed = obj['redeemed'];
     this.canredeem = obj['canredeem'];
     this.status = obj['status'];
@@ -33,6 +44,7 @@ class RewardListItem {
     company = snapshot.value['company'];
     cost = snapshot.value['cost'];
     description = snapshot.value['description'];
+    display = snapshot.value['display'];
     redeemed = snapshot.value['redeemed'];
     canredeem = snapshot.value['canredeem'];
     status = snapshot.value['status'];
@@ -58,7 +70,8 @@ class _RewardsListState extends State<RewardsList> {
     rewards = new List();
     _onRewardAddedSubscription =
         rewardsReference.onChildAdded.listen(_onRewardAdded);
-    _onRewardChangedSubscription = rewardsReference.onChildChanged.listen(_onRewardUpdated);
+    _onRewardChangedSubscription =
+        rewardsReference.onChildChanged.listen(_onRewardUpdated);
   }
 
   void _onRewardAdded(Event event) {
@@ -67,10 +80,12 @@ class _RewardsListState extends State<RewardsList> {
     });
   }
 
-  void _onRewardUpdated(Event event){
-    var oldRewardValue = rewards.singleWhere((reward) => reward.id == event.snapshot);
+  void _onRewardUpdated(Event event) {
+    var oldRewardValue =
+        rewards.singleWhere((reward) => reward.id == event.snapshot);
     setState(() {
-      rewards[rewards.indexOf(oldRewardValue)] = new RewardListItem.fromSnapshot(event.snapshot);
+      rewards[rewards.indexOf(oldRewardValue)] =
+          new RewardListItem.fromSnapshot(event.snapshot);
     });
   }
 
@@ -81,52 +96,57 @@ class _RewardsListState extends State<RewardsList> {
           itemCount: rewards.length,
           itemBuilder: (context, index) {
             return Column(children: [
-              rewards[index].canredeem == 'true'
-                  ? Card(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          ListTile(
-                            title: Text('${rewards[index].company}'),
-                            subtitle: Text('${rewards[index].description}'),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+              rewards[index].display == 'true'
+                  ? rewards[index].canredeem == 'true'
+                      ? Card(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
-                              Text('${rewards[index].cost}' ' pts '),
-                              TextButton(
-                                child: const Text('REDEEM'),
-                                onPressed: () {},
+                              ListTile(
+                                title: Text('${rewards[index].company}'),
+                                subtitle: Text('${rewards[index].description}'),
                               ),
-                              const SizedBox(width: 8),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: <Widget>[
+                                  Text('${rewards[index].cost}' ' pts '),
+                                  TextButton(
+                                    child: const Text('REDEEM'),
+                                    onPressed: () {},
+                                  ),
+                                  const SizedBox(width: 8),
+                                ],
+                              ),
                             ],
                           ),
-                        ],
-                      ),
-                    )
-                  : Card(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          ListTile(
-                            title: Text('${rewards[index].company}', style: TextStyle(color: Colors.grey)),
-                            subtitle: Text('${rewards[index].description}', style: TextStyle(color: Colors.grey)),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                        )
+                      : Card(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
-                              Text('${rewards[index].cost}' ' pts ', style: TextStyle(color: Colors.grey)),
-
-                              TextButton(
-                                child: Text('${rewards[index].status}', style: TextStyle(color: Colors.grey)),
-                                onPressed: () {},
+                              ListTile(
+                                title: Text('${rewards[index].company}',
+                                    style: TextStyle(color: Colors.grey)),
+                                subtitle: Text('${rewards[index].description}',
+                                    style: TextStyle(color: Colors.grey)),
                               ),
-                              const SizedBox(width: 8),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: <Widget>[
+                                  Text('${rewards[index].cost}' ' pts ',
+                                      style: TextStyle(color: Colors.grey)),
+                                  TextButton(
+                                    child: Text('${rewards[index].status}',
+                                        style: TextStyle(color: Colors.grey)),
+                                    onPressed: () {},
+                                  ),
+                                  const SizedBox(width: 8),
+                                ],
+                              ),
                             ],
                           ),
-                        ],
-                      ),
-                    )
+                        )
+                  : Container(),
             ]);
           }),
       floatingActionButton: FloatingActionButton(
