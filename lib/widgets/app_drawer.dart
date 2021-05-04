@@ -86,16 +86,14 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   },
                   selected: _selectedRoute == RouteNames.locations,
                 ),
-                /*
                 ListTile(
-                  leading: const Icon(Icons.camera_alt_outlined),
+                  leading: const Icon(Icons.camera_alt_rounded),
                   title: const Text(PageTitles.camera),
                   onTap: () async {
                     await _navigateTo(context, RouteNames.camera);
                   },
                   selected: _selectedRoute == RouteNames.camera,
                 ),
-                 */
                 ListTile(
                   leading: const Icon(Icons.star),
                   title: const Text(PageTitles.rewards),

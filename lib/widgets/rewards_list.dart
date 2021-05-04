@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 
-import '../constants/colors.dart';
-import '../constants/route_names.dart';
 
 class RewardListItem {
   String id;
@@ -149,13 +147,6 @@ class _RewardsListState extends State<RewardsList> {
                   : Container(),
             ]);
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await Navigator.pushNamed(context, RouteNames.camera);
-        },
-        child: Icon(Icons.camera_alt_rounded, color: ThemeColors.fabIcon),
-        backgroundColor: ThemeColors.fab,
-      ),
     );
   }
 }
