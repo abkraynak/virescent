@@ -163,7 +163,7 @@ class _RewardsListState extends State<RewardsList> {
                                                 return AlertDialog(
                                                   title: Text('Success'),
                                                   content: Text(
-                                                      'Your reward redemption will be sent to your email address.'),
+                                                      'Your reward redemption will be sent to your email address. Enjoy!'),
                                                   actions: [
                                                     TextButton(
                                                       child: Text('CLOSE'),
